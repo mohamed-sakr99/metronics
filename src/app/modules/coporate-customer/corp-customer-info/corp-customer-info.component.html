@@ -1,0 +1,121 @@
+<div class="main">
+  <div class="container">
+    <div class="d-flex justify-content-center align-items-center">
+      <h3 class="text-success">corporate info : {{corpotareCustomerInfo.Name}}</h3>
+    </div>
+    <hr>
+    <div class="row justify-content-lg-center">
+
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> Cutomer name :</span>
+          <span class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.Name}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CustomerType :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.AccountNumber}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> AccountType :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.AccountType}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> Comment :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.Comment}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CompanyAddress :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CompanyAddress}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CompanyName :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CompanyName}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span "> CompanyType :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CompanyType}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CreatedByName :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CreatedByName}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CreatedOn :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CreatedOn}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> CustomerStatus :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.CustomerStatus}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> LinesNumber :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.LinesNumber}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> Mobile :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.Mobile}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> ModifiedByName :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.ModifiedByName}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> ModifiedOn :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.ModifiedOn}}</span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="d-flex justify-content-between">
+          <span class="d-inline-block info m-2 p-2 cust-span"> RequestType :</span> <span
+            class="d-inline-block info m-2 p-2 cust-span">{{corpotareCustomerInfo.RequestType}}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="main-body">
+    <h3 class="m-3">History</h3>
+    <p-table [value]="corporateCustomerHistory" [scrollable]="true" scrollHeight="400px">
+      <ng-template pTemplate="header">
+        <tr>
+          <th style="min-width:200px">comment</th>
+          <th style="min-width:200px"> by </th>
+          <th style="min-width:200px"> on</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-history>
+        <tr>
+          <td style="min-width:200px">{{history.Comment}}</td>
+          <td style="min-width:200px">{{history.CreatedBy}}</td>
+          <td style="min-width:200px">{{history.CreatedOn}}</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>

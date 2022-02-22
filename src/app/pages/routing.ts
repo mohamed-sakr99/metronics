@@ -4,7 +4,14 @@ const Routing: Routes = [
   {
     path: 'dashboard',
     loadChildren: () =>
-      import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      import('../modules/dashboard/dashboard.module').then(
+        (m) => m.DashboardModule
+      ),
+  },
+  {
+    path: 'reports',
+    loadChildren: () =>
+      import('../modules/reports/reports.module').then((m) => m.ReportsModule),
   },
   {
     path: 'builder',
@@ -12,9 +19,18 @@ const Routing: Routes = [
       import('./builder/builder.module').then((m) => m.BuilderModule),
   },
   {
-    path: 'crafted/pages/wizards',
+    path: 'adsl-fixed',
     loadChildren: () =>
-      import('../modules/wizards/wizards.module').then((m) => m.WizardsModule),
+      import('../modules/adsl-fixed/adsl-fixed.module').then(
+        (m) => m.AdslFixedModule
+      ),
+  },
+  {
+    path: 'corporate',
+    loadChildren: () =>
+      import('../modules/coporate-customer/coporate-customer.module').then(
+        (m) => m.CoporateCustomerModule
+      ),
   },
   {
     path: '',

@@ -1,0 +1,74 @@
+<div class="card-body">
+  <form [formGroup]="editUserForm" (ngSubmit)="updateUserForm()">
+    <div class="row justify-content-lg-center">
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Name</label>
+          <input type="text" class="form-control" formControlName="Name" />
+          <span *ngIf="Name?.invalid && !Name?.touched && !Name?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Email</label>
+          <input type="text" class="form-control" formControlName="Email" />
+          <span *ngIf="Email?.invalid && !Email?.touched && !Email?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">User Name</label>
+          <input type="text" class="form-control" formControlName="UserName" />
+          <span *ngIf="UserName?.invalid && !UserName?.touched && !UserName?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Mobile</label>
+          <input type="text" class="form-control" formControlName="Mobile" />
+          <span *ngIf="Mobile?.invalid && !Mobile?.touched && !Mobile?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Password</label>
+          <input type="text" class="form-control" formControlName="Password" />
+          <span *ngIf="Password?.invalid && !Password?.touched && !Password?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">User Role</label>
+          <select type="text" class="form-select" autofocus name="UserRoleID" formControlName="UserRoleID">
+            <option *ngFor="let userRole of userRoleDropMenu" [value]="userRole.ID">
+              {{ userRole?.Name }}
+            </option>
+          </select>
+          <span *ngIf="UserRoleID?.invalid && !UserRoleID?.touched && !UserRoleID?.dirty">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">is Active</label>
+          <mat-slide-toggle formControlName="IsActive"></mat-slide-toggle>
+        </div>
+      </div>
+      <button [disabled]="editUserForm?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
+        update User
+      </button>
+    </div>
+  </form>
+  <p-toast position="bottom-center"></p-toast>
+</div>

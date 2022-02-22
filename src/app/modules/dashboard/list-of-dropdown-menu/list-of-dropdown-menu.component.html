@@ -1,0 +1,64 @@
+<div class="main">
+  <h2>List of Drop Down Menu</h2>
+  <hr>
+
+  <div class="row justify-content-lg-center text-center">
+    <div class="col-md-4 col-sm-6 col-12">
+      <div class="mt-4">
+        <label class="cust-label">Menu category</label>
+        <select type="text" class="form-select" (change)="categoryChange($event)" autofocus name="LookupCategoryID"
+          [(ngModel)]="categoryID">
+          <ng-container *ngFor="let lookup of lookupsCategory">
+            <option [value]="lookup.ID">
+              {{ lookup?.Name }}
+            </option>
+          </ng-container>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <p-table [value]="List" [scrollable]="true" scrollHeight="500px" [rowHover]="true" [rows]="10" [filterDelay]="0"
+    [globalFilterFields]="['name','country','Status']">>
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Create By </th>
+        <th>Created On</th>
+        <th>Modified By </th>
+        <th>Modified on </th>
+        <th> Name</th>
+        <th>sevice provider Name</th>
+        <th>Service Quota Name</th>
+        <th>IS Active</th>
+        <!-- <th>update</th> -->
+        <th>status</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-lookup>
+      <tr>
+        <td>{{lookup?.CreatedByName}}</td>
+        <td>{{lookup?.CreatedOn}}</td>
+        <td>{{lookup?.ModifiedByName}}</td>
+        <td>{{lookup?.ModifiedOn}}</td>
+        <td>{{lookup?.Name}}</td>
+        <td>{{lookup?.ServiceProviderName}}</td>
+        <td>{{lookup?.ServiceQuotaName}}</td>
+        <td>{{lookup?.IsActive}}</td>
+        <!-- <td>
+          <button class="btn btn-primary" [routerLink]="['../editmenus', lookup.ID]">Edit</button>
+        </td> -->
+        <td>
+          <ng-container *ngIf="lookup?.IsActive === true">
+            <button (click)=" updateStatusList(lookup.ID)" class="btn btn-danger">InActive</button>
+          </ng-container>
+          <ng-container *ngIf="lookup?.IsActive === false">
+            <button (click)=" updateStatusList(lookup.ID)" class="btn btn-success">Active</button>
+          </ng-container>
+        </td>
+    </ng-template>
+  </p-table>
+  <div class="col-10" *ngIf="List.length> 0">
+    <p-paginator [rows]="PageLimit" [totalRecords]="totalCount" (onPageChange)="onPageChange($event)"
+      [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
+  </div>
+</div>

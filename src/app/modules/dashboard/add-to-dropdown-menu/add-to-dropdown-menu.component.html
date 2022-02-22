@@ -1,0 +1,94 @@
+<div class="main">
+  <form [formGroup]="LookupForm" (ngSubmit)="onSubmit()">
+    <div class="row justify-content-lg-center">
+
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Menu category</label>
+          <select type="text" class="form-select" (change)="categoryChange($event)" autofocus name="LookupCategoryID"
+            formControlName="LookupCategoryID">
+            <ng-container *ngFor="let lookup of lookupsCategory">
+              <option [value]="lookup.ID">
+                {{ lookup?.Name }}
+              </option>
+            </ng-container>
+          </select>
+          <span *ngIf="
+              LookupCategoryID?.invalid && LookupCategoryID?.touched && !LookupCategoryID?.dirty
+            ">
+            you have to select menu category
+          </span>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-4">
+          <label class="cust-label">Name</label>
+          <input type="text" class="form-control" formControlName="Name" />
+          <span *ngIf="Name?.invalid && Name?.touched && !Name?.dirty">
+            name is required
+          </span>
+        </div>
+      </div>
+
+      <ng-container *ngIf="isProviderShow">
+        <div class="col-md-4 col-sm-6 col-12">
+          <div class="mt-4">
+            <label clearable="true" class="cust-label">Service Provider</label>
+            <select type="text" class="form-select" (change)="providerChange($event)" name="ServiceProviderID"
+              formControlName="ServiceProviderID">
+              <ng-container *ngFor="let service of serviceProvider">
+                <option [value]="service.ID">
+                  {{ service?.Name }}
+                </option>
+              </ng-container>
+            </select>
+            <ng-container *ngIf="isProviderShow">
+              <span *ngIf="
+              ServiceProviderID?.invalid && ServiceProviderID?.touched && !ServiceProviderID?.dirty
+            ">
+                you have to select serviceProvider
+              </span>
+            </ng-container>
+          </div>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="isQuotaShow">
+        <div class="col-md-4 col-sm-6 col-12">
+          <div class="mt-4">
+            <label class="cust-label">Service Quota</label>
+            <select clearable="true" type="text" class="form-select" name="ServiceQuotaID"
+              formControlName="ServiceQuotaID" ng-options="option.name for option in options">
+              <ng-container *ngFor="let quota of serviceQuota">
+                <option [value]="quota.ID">
+                  {{ quota?.Name }}
+                </option>
+              </ng-container>
+            </select>
+            <ng-container *ngIf="isQuotaShow">
+              <span *ngIf="
+          ServiceQuotaID?.invalid && ServiceQuotaID?.touched && !ServiceQuotaID?.dirty
+        ">
+                you have to select service quota
+              </span>
+            </ng-container>
+
+          </div>
+        </div>
+      </ng-container>
+
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-5">
+          <label class="cust-label">Active</label>
+          <mat-slide-toggle formControlName="IsActive"></mat-slide-toggle>
+        </div>
+      </div>
+      <button [disabled]="LookupForm?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
+        Add to menu
+      </button>
+
+    </div>
+  </form>
+</div>
+<p-toast position="bottom-center"></p-toast>

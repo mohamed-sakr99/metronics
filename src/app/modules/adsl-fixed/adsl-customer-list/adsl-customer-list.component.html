@@ -1,0 +1,69 @@
+<div class="main">
+  <h2 class="mt-3">Adsl customer list</h2>
+  <hr>
+  <div class="m-2 w-35">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control search" name="search" id="button" (keyup.enter)="onSearch()"
+        [(ngModel)]="SearchText" placeholder="search by Request Number or Mobile" aria-label="Recipient's username"
+        aria-describedby="button-addon2">
+      <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onSearch()">
+        <i class="fa fa-search"></i>
+      </button>
+      <ng-container *ngIf="SearchText">
+        <button class="btn btn-outline-secondary" type="button" (click)="onClear()"> <i
+            class="fa fa-times"></i></button>
+      </ng-container>
+    </div>
+
+  </div>
+  <p-table [value]="customers" [scrollable]="true" scrollHeight="500px" [rowHover]="true" [rows]="10"
+    [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]" [filterDelay]="0"
+    [globalFilterFields]="['name','country','Status']">>
+    <ng-template pTemplate="header">
+      <tr class="table-head">
+        <th *ngIf="UserRole === 'Admin'">User Name</th>
+        <th>Date</th>
+        <th>Request Number</th>
+        <th>Customer Name</th>
+        <th>mobile</th>
+        <th>govenorate</th>
+        <th>national id</th>
+        <th>Service provider</th>
+        <th>Service quota</th>
+        <th>offer</th>
+        <th pSortableColumn="cutomerStatus">Cutomer Status <p-sortIcon field="CustomerStatus">
+          </p-sortIcon>
+        </th>
+        <th *ngIf="UserRole === 'Admin'">Edit</th>
+        <th> info</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-customer>
+      <tr>
+        <td>{{customer?.CreatedByName}}</td>
+        <td>{{customer?.CreatedOn}}</td>
+        <td>{{customer?.RequestNumber}}</td>
+        <td>{{customer?.Name}}</td>
+        <td>{{customer?.Mobile}}</td>
+        <td>{{customer?.Governorate}}</td>
+        <td>{{customer?.NationalId}}</td>
+        <td>{{customer?.ServiceProvider}}</td>
+        <td>{{customer?.ServiceQuota}}</td>
+        <td>{{customer?.Offer}}</td>
+        <td>{{customer?.CustomerStatus}}</td>
+        <td>
+          <button class="btn btn-primary" [routerLink]="['../edit',customer.ID]">Edit
+          </button>
+        </td>
+        <td>
+          <button class="btn btn-info" [routerLink]="['../info',customer.ID]">info
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+  <div class="col-10" *ngIf="totalCount> 0">
+    <p-paginator [rows]="PageLimit" [totalRecords]="totalCount" (onPageChange)="onPageChange($event)"
+      [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
+  </div>
+</div>
