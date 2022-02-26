@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class AuthService {
-  private apiServer = environment.apiUrl;
+  private apiServer = 'http://mkarim225-001-site1.ftempurl.com/api/';
 
   constructor(private http: HttpClient) {}
   login(data: any) {
