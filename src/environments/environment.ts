@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   appVersion: 'v8.0.34',
-  USERDATA_KEY: 'authf649fc9a5f55',
-  isMockEnabled: true,
+  // USERDATA_KEY: 'authf649fc9a5f55',
+  // isMockEnabled: true,
 
   apiUrl: 'http://mkarim225-001-site1.ftempurl.com/api/',
 

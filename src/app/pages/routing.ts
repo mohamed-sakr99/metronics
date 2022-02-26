@@ -19,14 +19,14 @@ const Routing: Routes = [
       import('./builder/builder.module').then((m) => m.BuilderModule),
   },
   {
-    path: 'adsl-fixed',
+    path: '',
     loadChildren: () =>
       import('../modules/adsl-fixed/adsl-fixed.module').then(
         (m) => m.AdslFixedModule
       ),
   },
   {
-    path: 'corporate',
+    path: 'corp',
     loadChildren: () =>
       import('../modules/coporate-customer/coporate-customer.module').then(
         (m) => m.CoporateCustomerModule
@@ -34,7 +34,7 @@ const Routing: Routes = [
   },
   {
     path: '',
-    redirectTo: '/dashboard',
+    redirectTo: '',
     pathMatch: 'full',
   },
   {
