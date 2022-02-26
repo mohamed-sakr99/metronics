@@ -5,8 +5,8 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Account Number</label>
-          <input type="text" class="form-control" formControlName="AccountNumber" />
-          <span *ngIf="AccountNumber?.invalid && !AccountNumber?.touched && !AccountNumber?.dirty">
+          <input type="text" class="form-control" formControlName="AccountNumber" autocomplete="off" />
+          <span *ngIf="AccountNumber?.invalid && AccountNumber?.touched && !AccountNumber?.dirty">
             this field is required
           </span>
         </div>
@@ -14,7 +14,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Cutomer Name</label>
-          <input type="text" class="form-control" formControlName="name" />
+          <input type="text" class="form-control" formControlName="name" autocomplete="off" />
           <span *ngIf="name?.invalid && !name?.touched && !name?.dirty">
             this field is required
           </span>
@@ -23,7 +23,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">mobile</label>
-          <input type="number" class="form-control" formControlName="mobile" name="mobile" />
+          <input type="number" class="form-control" formControlName="mobile" name="mobile" autocomplete="off" />
           <span *ngIf="mobile?.invalid && mobile?.touched && !mobile?.dirty">
             this field must be number
           </span>
@@ -32,7 +32,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">CompanyName</label>
-          <input type="text" class="form-control" formControlName="CompanyName" name="CompanyName" />
+          <input type="text" class="form-control" formControlName="CompanyName" name="CompanyName" autocomplete="off" />
           <span *ngIf="
             CompanyName?.invalid && CompanyName?.touched && !CompanyName?.dirty
           ">
@@ -43,7 +43,8 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">CompanyAddress</label>
-          <input type="text" class="form-control" formControlName="CompanyAddress" name="CompanyAddress" />
+          <input type="text" class="form-control" formControlName="CompanyAddress" name="CompanyAddress"
+            autocomplete="off" />
           <span *ngIf="
             CompanyAddress?.invalid && CompanyAddress?.touched && !CompanyAddress?.dirty
           ">
@@ -54,7 +55,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">CompanyType</label>
-          <input type="text" class="form-control" formControlName="CompanyType" name="CompanyType" />
+          <input type="text" class="form-control" formControlName="CompanyType" name="CompanyType" autocomplete="off" />
           <span *ngIf="
             CompanyType?.invalid && CompanyType?.touched && !CompanyType?.dirty
           ">
@@ -95,7 +96,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Lines Number</label>
-          <input type="text" class="form-control" formControlName="LinesNumber" />
+          <input type="number" class="form-control" formControlName="LinesNumber" autocomplete="off" />
           <span *ngIf="LinesNumber?.invalid && !LinesNumber?.touched && !LinesNumber?.dirty">
             this field is required
           </span>
@@ -119,7 +120,8 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Add Comment</label>
-          <textarea type="text" class="form-control" formControlName="Comment" name="Comment"></textarea>
+          <textarea type="text" class="form-control" formControlName="Comment" autocomplete="off"
+            name="Comment"></textarea>
           <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
             this field is required
           </span>

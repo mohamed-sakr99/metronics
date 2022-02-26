@@ -9,7 +9,7 @@ import { environment } from '../../../../../../environments/environment';
 export class AsideMenuComponent implements OnInit {
   // appAngularVersion: string = environment.appVersion;
   // appPreviewChangelogUrl: string = environment.appPreviewChangelogUrl;
-
+  userRole = JSON.parse(localStorage.getItem('user') || '{}').Role;
   constructor() {}
 
   ngOnInit(): void {}

@@ -56,4 +56,9 @@ export class ListUserComponent implements OnInit {
   onSearch() {
     this.getListOfUsers();
   }
+
+  onClear() {
+    this.SearchText = '';
+    this.getListOfUsers();
+  }
 }

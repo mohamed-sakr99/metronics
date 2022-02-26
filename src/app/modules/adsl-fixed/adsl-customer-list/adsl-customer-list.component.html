@@ -3,9 +3,9 @@
   <hr>
   <div class="m-2 w-35">
     <div class="input-group mb-3">
-      <input type="text" class="form-control search" name="search" id="button" (keyup.enter)="onSearch()"
-        [(ngModel)]="SearchText" placeholder="search by Request Number or Mobile" aria-label="Recipient's username"
-        aria-describedby="button-addon2">
+      <input type="text" autocomplete="off" class="form-control search" name="search" id="button"
+        (keyup.enter)="onSearch()" [(ngModel)]="SearchText" placeholder="search by Request Number or Mobile"
+        aria-label="Recipient's username" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onSearch()">
         <i class="fa fa-search"></i>
       </button>

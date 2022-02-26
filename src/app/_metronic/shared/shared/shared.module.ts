@@ -7,6 +7,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [],
@@ -20,6 +21,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSlideToggleModule,
     MatCardModule,
     NgbModule,
+    MatSnackBarModule,
   ],
   exports: [
     TableModule,
@@ -30,6 +32,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     MatSlideToggleModule,
     MatCardModule,
     NgbModule,
+    MatSnackBarModule,
   ],
 })
 export class SharedModule {}

@@ -1,6 +1,6 @@
-<div class="main m-2 p-2">
+<div class="card m-2 p-2 mb-3">
   <div class="d-flex justify-content-center align-items-center">
-    <h3 class="text-success">customer info : {{customerInfo?.Name}}</h3>
+    <h3 class="text-primary">customer info : {{customerInfo?.Name}}</h3>
   </div>
   <div class="container">
     <hr>
@@ -134,23 +134,23 @@
       </div>
     </div>
   </div>
-
-  <div class="main-body" *ngIf="customerHistory.length > 0">
-    <h3>History</h3>
-    <p-table [value]="customerHistory" [scrollable]="true" scrollHeight="400px">
-      <ng-template pTemplate="header">
-        <tr>
-          <th style="min-width:200px">comment</th>
-          <th style="min-width:200px"> by </th>
-          <th style="min-width:200px"> on</th>
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-history>
-        <tr>
-          <td style="min-width:200px">{{history.Comment}}</td>
-          <td style="min-width:200px">{{history.CreatedBy}}</td>
-          <td style="min-width:200px">{{history.CreatedOn}}</td>
-        </tr>
-      </ng-template>
-    </p-table>
-  </div>
+</div>
+<div class="card mt-5" *ngIf="customerHistory.length > 0">
+  <h3 class="text-center m-3 text-primary">History</h3>
+  <p-table [value]="customerHistory" [scrollable]="true" scrollHeight="400px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width:200px">comment</th>
+        <th style="min-width:200px"> by </th>
+        <th style="min-width:200px"> on</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-history>
+      <tr>
+        <td style="min-width:200px">{{history.Comment}}</td>
+        <td style="min-width:200px">{{history.CreatedBy}}</td>
+        <td style="min-width:200px">{{history.CreatedOn}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

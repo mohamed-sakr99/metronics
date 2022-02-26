@@ -23,8 +23,8 @@ export class AuthGuard implements CanActivate {
     | boolean
     | UrlTree {
     if (this.authService.isLoggedIn !== true) {
-      window.alert('Access Denied, Login is Required to Access This Page!');
-      this.router.navigate(['/login']);
+      // window.alert('Access Denied, Login is Required to Access This Page!');
+      this.router.navigate(['auth/login']);
     }
     return true;
   }

@@ -4,7 +4,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Name</label>
-          <input type="text" class="form-control" formControlName="Name" />
+          <input type="text" class="form-control" formControlName="Name" autocomplete="off" />
           <span *ngIf="Name?.invalid && !Name?.touched && !Name?.dirty">
             this field is required
           </span>
@@ -13,7 +13,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Email</label>
-          <input type="email" class="form-control" formControlName="Email" />
+          <input type="email" class="form-control" formControlName="Email" autocomplete="off" />
           <span *ngIf="Email?.invalid && !Email?.touched && !Email?.dirty">
             this field is required
           </span>
@@ -22,7 +22,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">User Name</label>
-          <input type="text" class="form-control" formControlName="UserName" />
+          <input type="text" class="form-control" formControlName="UserName" autocomplete="off" />
           <span *ngIf="UserName?.invalid && !UserName?.touched && !UserName?.dirty">
             this field is required
           </span>
@@ -31,7 +31,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Mobile</label>
-          <input type="number" class="form-control" formControlName="Mobile" />
+          <input type="number" class="form-control" formControlName="Mobile" autocomplete="off" />
           <span *ngIf="Mobile?.invalid && !Mobile?.touched && !Mobile?.dirty">
             this field is required
           </span>
@@ -40,7 +40,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Password</label>
-          <input type="password" class="form-control" formControlName="Password" />
+          <input type="password" class="form-control" formControlName="Password" autocomplete="off" />
           <span *ngIf="Password?.invalid && !Password?.touched && !Password?.dirty">
             this field is required
           </span>

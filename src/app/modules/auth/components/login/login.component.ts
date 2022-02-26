@@ -5,10 +5,8 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
-import { Subscription, Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
-import { UserModel } from '../../models/user.model';
-import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { AuthService } from '../..';
 
@@ -26,7 +24,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private _snackBar: MatSnackBar
   ) {
     this.initFormControl();
     this.createForm();
@@ -61,7 +60,11 @@ export class LoginComponent implements OnInit {
     this.authService.login(this.loginForm.value).subscribe((user: any) => {
       if (user) {
         this.userData = user;
-        console.log('user', user);
+        if (user.status === 'Failure') {
+          this._snackBar.open(user.error, 'close', {
+            duration: 3500,
+          });
+        }
 
         localStorage.setItem('user', JSON.stringify(user.User));
         this.router.navigate(['/']);
@@ -74,18 +77,18 @@ export class LoginComponent implements OnInit {
   //   this.router.navigate(['/']);
   // }
 
-  UdateUserSuucessFuly() {
-    this.messageService.add({
-      severity: 'success',
-      summary: 'you update employee Successfly',
-      detail: 'تم تحديث الموظف بنجاح',
-    });
-  }
-  ErrorInUpdateUser() {
-    this.messageService.add({
-      severity: 'error',
-      summary: '‘User Name Is Already Exist',
-      detail: 'اسم المستخدم موجود بالفعل مسبقا',
-    });
-  }
+  // UdateUserSuucessFuly() {
+  //   this.messageService.add({
+  //     severity: 'success',
+  //     summary: 'you update employee Successfly',
+  //     detail: 'تم تحديث الموظف بنجاح',
+  //   });
+  // }
+  // ErrorInUpdateUser() {
+  //   this.messageService.add({
+  //     severity: 'error',
+  //     summary: '‘User Name Is Already Exist',
+  //     detail: 'اسم المستخدم موجود بالفعل مسبقا',
+  //   });
+  // }
 }

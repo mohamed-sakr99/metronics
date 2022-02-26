@@ -103,8 +103,8 @@ export class CorpCustomerEditComponent implements OnInit {
           RequestTypeID: new FormControl(res.Corporate['RequestTypeID']),
           Comment: new FormControl(res.Corporate['Comment']),
         });
+        this.cdr.detectChanges();
       });
-    this.cdr.detectChanges();
   }
   updateCurrentCutomerForm() {
     document.getElementById('button-1')?.setAttribute('disabled', 'true');

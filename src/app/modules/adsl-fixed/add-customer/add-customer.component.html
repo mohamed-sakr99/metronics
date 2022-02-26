@@ -12,7 +12,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Request Number</label>
-          <input type="text" class="form-control" formControlName="RequestNumber" />
+          <input type="text" class="form-control" formControlName="RequestNumber" autocomplete="off" />
           <span *ngIf="RequestNumber?.invalid && RequestNumber?.touched && !RequestNumber?.dirty">
             this field is required
           </span>
@@ -22,7 +22,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">name</label>
-          <input type="text" class="form-control" formControlName="name" />
+          <input type="text" class="form-control" formControlName="name" autocomplete="off" />
           <span *ngIf="name?.invalid && name?.touched && !name?.dirty">
             this field is required
           </span>
@@ -31,7 +31,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">national id</label>
-          <input type="number" class="form-control" formControlName="nationalId" name="nationalId" />
+          <input type="number" class="form-control" formControlName="nationalId" name="nationalId" autocomplete="off" />
           <span *ngIf="
               nationalId?.invalid && nationalId?.touched && !nationalId?.dirty
             ">
@@ -42,7 +42,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">address</label>
-          <input type="text" class="form-control" formControlName="address" name="address" />
+          <input type="text" class="form-control" formControlName="address" name="address" autocomplete="off" />
           <span *ngIf="address?.invalid && address?.touched && !address?.dirty">
             this field is required
           </span>
@@ -51,7 +51,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">fixed line</label>
-          <input type="number" class="form-control" formControlName="fixedLine" name="fixedLine" />
+          <input type="number" class="form-control" formControlName="fixedLine" name="fixedLine" autocomplete="off" />
           <span *ngIf="
               fixedLine?.invalid && fixedLine?.touched && !fixedLine?.dirty
             ">
@@ -62,7 +62,8 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Nearest fixed line</label>
-          <input type="number" class="form-control" formControlName="nearestFixedLine" name="nearestFixedLine" />
+          <input type="number" class="form-control" formControlName="nearestFixedLine" name="nearestFixedLine"
+            autocomplete="off" />
           <span *ngIf="
           nearestFixedLine?.invalid && nearestFixedLine?.touched && !nearestFixedLine?.dirty
             ">
@@ -73,7 +74,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">mobile</label>
-          <input type="number" class="form-control" formControlName="mobile" name="mobile" />
+          <input type="number" class="form-control" formControlName="mobile" name="mobile" autocomplete="off" />
           <span *ngIf="mobile?.invalid && mobile?.touched && !mobile?.dirty">
             this field must be number
           </span>
@@ -97,7 +98,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">city</label>
-          <input type="text" class="form-control" formControlName="city" name="city" />
+          <input type="text" class="form-control" formControlName="city" name="city" autocomplete="off" />
           <span *ngIf="
               city?.invalid && city?.touched && !city?.dirty
             ">
@@ -108,7 +109,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">District</label>
-          <input type="text" class="form-control" formControlName="District" name="District" />
+          <input type="text" class="form-control" formControlName="District" name="District" autocomplete="off" />
           <span *ngIf="
               District?.invalid && District?.touched && !District?.dirty
             ">
@@ -119,7 +120,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">special mark</label>
-          <input type="text" class="form-control" formControlName="SpecialMark" name="SpecialMark" />
+          <input type="text" class="form-control" formControlName="SpecialMark" name="SpecialMark" autocomplete="off" />
           <span *ngIf="
               SpecialMark?.invalid && SpecialMark?.touched && !SpecialMark?.dirty
             ">
@@ -130,7 +131,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">central</label>
-          <input type="text" class="form-control" formControlName="central" name="central" />
+          <input type="text" class="form-control" formControlName="central" name="central" autocomplete="off" />
           <span *ngIf="central?.invalid && central?.touched && !central?.dirty">
             this field is required
           </span>
@@ -259,7 +260,8 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Comment</label>
-          <textarea type="text" class="form-control" formControlName="Comment" name="Comment"></textarea>
+          <textarea type="text" class="form-control" formControlName="Comment" name="Comment"
+            autocomplete="off"></textarea>
           <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
             this field is required
           </span>

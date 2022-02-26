@@ -1,8 +1,15 @@
 <div class="main-body">
   <h2 class="mt-3">User List</h2>
-  <div class="m-2 w-50">
-    <input type="text" name="search" id="" [(ngModel)]="SearchText" class="form-control" placeholder="search by Mobile"
-      (keyup.enter)="onSearch()" />
+  <div class="input-group mb-3">
+    <input type="text" class="form-control search" name="search" id="button" (keyup.enter)="onSearch()"
+      [(ngModel)]="SearchText" placeholder="search by  Mobile" aria-label="Recipient's username"
+      aria-describedby="button-addon2">
+    <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onSearch()">
+      <i class="fa fa-search"></i>
+    </button>
+    <ng-container *ngIf="SearchText">
+      <button class="btn btn-outline-secondary" type="button" (click)="onClear()"> <i class="fa fa-times"></i></button>
+    </ng-container>
   </div>
   <p-table [value]="userList" [scrollable]="true" scrollHeight="500px" [rowHover]="true" [rows]="10" [filterDelay]="0"
     [globalFilterFields]="['name','country','Status']">>

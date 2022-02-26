@@ -42,6 +42,11 @@ const routes: Routes = [
         redirectTo: 'add-user',
         pathMatch: 'full',
       },
+      {
+        path: '**',
+        redirectTo: 'add-user',
+        pathMatch: 'full',
+      },
     ],
   },
 ];
