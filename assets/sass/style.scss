@@ -1,0 +1,85 @@
+//
+// Theme style
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+//
+
+// Mode
+$mode: default;
+
+// Initialize
+@import "init";
+
+// Components
+@import "./core/components/components";
+@import "components/components";
+
+// Layout
+@import "layout/layout";
+
+// Angular vendors
+@import "~socicon/css/socicon.css";
+@import "~@fortawesome/fontawesome-free/css/all.min.css";
+@import "~line-awesome/dist/line-awesome/css/line-awesome.css";
+@import "~prism-themes/themes/prism-shades-of-purple.css";
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+@import "~animate.css/animate.css";
+@import "./core/vendors/plugins/prismjs";
+@import "./core/vendors/plugins/formvalidation";
+
+.p-datatable-scrollable
+  > .p-datatable-wrapper
+  > .p-datatable-table
+  > .p-datatable-thead,
+.p-datatable-scrollable
+  > .p-datatable-wrapper
+  > .p-datatable-virtual-scrollable-body
+  > .cdk-virtual-scroll-content-wrapper
+  > .p-datatable-table
+  > .p-datatable-thead {
+  background-color: #ade9cd;
+  margin-bottom: 15px;
+  padding: 10px 0 !important;
+  text-align: center;
+  color: #000 !important;
+}
+.p-datatable-scrollable .p-datatable-thead > tr > th,
+.p-datatable-scrollable .p-datatable-tbody > tr > td,
+.p-datatable-scrollable .p-datatable-tfoot > tr > td label {
+  margin-bottom: 10px;
+  justify-content: center;
+  text-align: center;
+}
+.table tr,
+.table th,
+.table td {
+  color: #00f !important;
+}
+.form-control,
+.form-select {
+  background-color: #dddd !important;
+  box-shadow: 5px 5px 5px -5px #eee;
+}
+button {
+  text-align: center;
+  margin: auto;
+}
+.margin {
+  margin-top: 45px;
+}
+.custom-toast .ui-toast {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+}
+
+// adjusts font, color and other elements of the toast window if needed
+.custom-toast .ui-toast-message-content {
+  font-family: "Courier New", Courier, monospace;
+  background: #7b9aff;
+}
+label {
+  margin-bottom: 5px;
+}
