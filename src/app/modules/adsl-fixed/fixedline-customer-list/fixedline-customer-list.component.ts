@@ -13,7 +13,7 @@ export class FixedlineCustomerListComponent implements OnInit {
   UserRole = JSON.parse(localStorage.getItem('user') || '{}')?.Role;
   CustomerType = 23;
   page: any = 1;
-  PageLimit: any = 20;
+  PageLimit: any = 25;
   totalCount: any;
   SearchText: any;
 
@@ -44,8 +44,8 @@ export class FixedlineCustomerListComponent implements OnInit {
         this.cdr.detectChanges();
       });
   }
-  onPageChange(event: any) {
-    this.page = event.page + 1;
+  onPageChange(page: any) {
+    // this.page = event.page + 1;
     this.getFixedLineCustomerList();
   }
 

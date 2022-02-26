@@ -40,8 +40,7 @@ export class ListUserComponent implements OnInit {
       });
   }
 
-  onPageChange(event: any) {
-    this.page = event.page + 1;
+  onPageChange(page: any) {
     this.getListOfUsers();
   }
 

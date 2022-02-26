@@ -79,14 +79,17 @@
       </ng-container>
 
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-5">
-          <label class="cust-label">Active</label>
-          <mat-slide-toggle formControlName="IsActive"></mat-slide-toggle>
+        <div class="margin">
+          <label class="cust-label mt-5"></label>
+          <mat-slide-toggle formControlName="IsActive">Active</mat-slide-toggle>
         </div>
+
       </div>
-      <button [disabled]="LookupForm?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
-        Add to menu
-      </button>
+      <div class="ma-auto text-center">
+        <button [disabled]="LookupForm?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
+          Add to menu
+        </button>
+      </div>
 
     </div>
   </form>

@@ -36,7 +36,7 @@ export class AddUserComponent implements OnInit {
     this.UserName = new FormControl('', Validators.required);
     this.Password = new FormControl('', Validators.required);
     this.UserRoleID = new FormControl('', Validators.required);
-    this.IsActive = new FormControl('', Validators.required);
+    this.IsActive = new FormControl(false, Validators.required);
   }
   createForm() {
     this.addUserForm = new FormGroup({

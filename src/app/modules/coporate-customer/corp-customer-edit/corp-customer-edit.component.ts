@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
@@ -38,7 +38,8 @@ export class CorpCustomerEditComponent implements OnInit {
     private corporateApiService: CoporateApiService,
     private route: ActivatedRoute,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private cdr: ChangeDetectorRef
   ) {
     this.initFormGroup();
     this.createForm();
@@ -78,6 +79,7 @@ export class CorpCustomerEditComponent implements OnInit {
       this.AccountType = res.Lookups.AccountType;
       this.customerStatus = res.Lookups.CustomerStatus;
       this.RequestTypes = res.Lookups.RequestType;
+      this.cdr.detectChanges();
       console.log(this.AccountType);
     });
   }
@@ -102,9 +104,10 @@ export class CorpCustomerEditComponent implements OnInit {
           Comment: new FormControl(res.Corporate['Comment']),
         });
       });
+    this.cdr.detectChanges();
   }
   updateCurrentCutomerForm() {
-    document.getElementById('button')?.setAttribute('disabled', 'true');
+    document.getElementById('button-1')?.setAttribute('disabled', 'true');
     this.corporateApiService
       .UpdateCurrentCorporateCustomer(
         this.editCorporateForm.value,
@@ -115,7 +118,7 @@ export class CorpCustomerEditComponent implements OnInit {
         if (res?.status === 'successfully') {
           this.editedCutomer();
           setTimeout(() => {
-            this.router.navigate(['/corp-cust/corp-cust-list']);
+            this.router.navigate(['/corporate/corp-list']);
           }, 2500);
         } else {
           this.ErrorInEditedCustomer();

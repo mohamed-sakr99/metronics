@@ -12,7 +12,7 @@ export class CorpCustomerListComponent implements OnInit {
   UserID = JSON.parse(localStorage.getItem('user') || '{}')?.ID;
   UserRole = JSON.parse(localStorage.getItem('user') || '{}')?.Role;
   Page: any = 1;
-  PageLimit: any = 20;
+  PageLimit: any = 25;
   totalCount: any;
   SearchText: any;
 
@@ -42,8 +42,7 @@ export class CorpCustomerListComponent implements OnInit {
         this.cdr.detectChanges();
       });
   }
-  onPageChange(event: any) {
-    this.Page = event.page + 1;
+  onPageChange(Page: any) {
     this.getCustomerForCorporate();
   }
   onSearch() {

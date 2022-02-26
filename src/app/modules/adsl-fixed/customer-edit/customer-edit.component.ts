@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
 import { ApiService } from 'src/app/services/api.service';
@@ -66,7 +66,8 @@ export class CustomerEditComponent implements OnInit {
     private cdr: ChangeDetectorRef,
     private route: ActivatedRoute,
     private customersDetailsService: CustomersDetailsService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private router: Router
   ) {
     this.initFormControl();
     this.createForm();
@@ -162,6 +163,7 @@ export class CustomerEditComponent implements OnInit {
   }
 
   updateForm() {
+    document.getElementById('button-2')?.setAttribute('disabled', 'true');
     this.customersDetailsService
       .updateCurrentCustomer(
         this.editCustomer.value,
@@ -174,6 +176,7 @@ export class CustomerEditComponent implements OnInit {
         } else {
           this.ErrorInEditedCustomer();
         }
+        document.getElementById('button-2')?.removeAttribute('disabled');
       });
   }
 

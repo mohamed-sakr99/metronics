@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CoporateApiService } from 'src/app/services/coporate-api.service';
 
@@ -12,7 +12,8 @@ export class CorpCustomerInfoComponent implements OnInit {
   corporateCustomerHistory: any = [];
   constructor(
     private corporateApiService: CoporateApiService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private cdr: ChangeDetectorRef
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +26,7 @@ export class CorpCustomerInfoComponent implements OnInit {
       .subscribe((res: any) => {
         this.corpotareCustomerInfo = res.Corporate;
         this.corporateCustomerHistory = res.History;
+        this.cdr.detectChanges();
         console.log(this.corpotareCustomerInfo);
         console.log(res.History);
       });

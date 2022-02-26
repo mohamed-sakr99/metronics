@@ -11,7 +11,7 @@ export class ListOfDropdownMenuComponent implements OnInit {
   lookupsCategory: any = [];
   List = [];
   Page: any = 1;
-  PageLimit: any = 20;
+  PageLimit: any = 25;
   totalCount: any;
   categoryID: any = 1;
   constructor(
@@ -37,8 +37,7 @@ export class ListOfDropdownMenuComponent implements OnInit {
     this.listService();
   }
 
-  onPageChange(event: any) {
-    this.Page = event.page + 1;
+  onPageChange(page: any) {
     this.listService();
   }
   updateStatusList(ID: any) {
@@ -48,6 +47,7 @@ export class ListOfDropdownMenuComponent implements OnInit {
         if (res.status === 'successfully') {
           this.listService();
         }
+        this.cdr.detectChanges();
       });
   }
   listService() {

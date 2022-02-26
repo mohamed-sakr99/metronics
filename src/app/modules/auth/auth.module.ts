@@ -1,3 +1,4 @@
+import { SharedModule } from './../../_metronic/shared/shared/shared.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
@@ -17,6 +18,7 @@ import { TranslationModule } from '../i18n/translation.module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    SharedModule,
   ],
 })
 export class AuthModule {}

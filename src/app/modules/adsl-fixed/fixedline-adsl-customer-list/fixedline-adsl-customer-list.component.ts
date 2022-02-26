@@ -43,8 +43,7 @@ export class FixedlineAdslCustomerListComponent implements OnInit {
         this.cdr.detectChanges();
       });
   }
-  onPageChange(event: any) {
-    this.page = event.page + 1;
+  onPageChange(page: any) {
     this.getAdslAndFixedLineCustomerList();
   }
 

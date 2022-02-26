@@ -13,7 +13,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Email</label>
-          <input type="text" class="form-control" formControlName="Email" />
+          <input type="email" class="form-control" formControlName="Email" />
           <span *ngIf="Email?.invalid && !Email?.touched && !Email?.dirty">
             this field is required
           </span>
@@ -31,7 +31,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Mobile</label>
-          <input type="text" class="form-control" formControlName="Mobile" />
+          <input type="number" class="form-control" formControlName="Mobile" />
           <span *ngIf="Mobile?.invalid && !Mobile?.touched && !Mobile?.dirty">
             this field is required
           </span>
@@ -40,7 +40,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Password</label>
-          <input type="text" class="form-control" formControlName="Password" />
+          <input type="password" class="form-control" formControlName="Password" />
           <span *ngIf="Password?.invalid && !Password?.touched && !Password?.dirty">
             this field is required
           </span>
@@ -65,9 +65,11 @@
           <mat-slide-toggle formControlName="IsActive"></mat-slide-toggle>
         </div>
       </div>
-      <button [disabled]="addUserForm?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
-        Add Cutomer
-      </button>
+      <div class="m-auto text-center">
+        <button [disabled]="addUserForm?.invalid" type="submit" class="mt-4 text-center btn btn-primary">
+          Add user
+        </button>
+      </div>
     </div>
   </form>
   <p-toast position="bottom-center"></p-toast>

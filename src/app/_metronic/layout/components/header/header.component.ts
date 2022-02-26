@@ -1,8 +1,16 @@
-import {AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild,} from '@angular/core';
-import {NavigationCancel, NavigationEnd, Router} from '@angular/router';
-import {Subscription} from 'rxjs';
-import {LayoutService} from '../../core/layout.service';
-import {MenuComponent} from '../../../kt/components';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { NavigationCancel, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { LayoutService } from '../../core/layout.service';
+import { MenuComponent } from '../../../kt/components';
+import { JsonpClientBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-header',
@@ -10,6 +18,8 @@ import {MenuComponent} from '../../../kt/components';
   styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
+  UserName = JSON.parse(localStorage.getItem('user') || '{}')?.Name;
+
   headerContainerCssClasses: string = '';
   asideDisplay: boolean = true;
   headerLeft: string = 'menu';
@@ -17,7 +27,7 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   pageTitleAttributes: {
     [attrName: string]: string | boolean;
   };
-  @ViewChild('ktPageTitle', {static: true}) ktPageTitle: ElementRef;
+  @ViewChild('ktPageTitle', { static: true }) ktPageTitle: ElementRef;
 
   private unsubscribe: Subscription[] = [];
 
@@ -26,7 +36,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.headerContainerCssClasses = this.layout.getStringCSSClasses('headerContainer');
+    this.headerContainerCssClasses =
+      this.layout.getStringCSSClasses('headerContainer');
     this.asideDisplay = this.layout.getProp('aside.display') as boolean;
     this.headerLeft = this.layout.getProp('header.left') as string;
     this.pageTitleCssClasses = this.layout.getStringCSSClasses('pageTitle');
@@ -53,6 +64,9 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
     this.unsubscribe.push(routerSubscription);
   }
 
-  ngOnDestroy() {
+  logout() {
+    localStorage.removeItem('user');
+    this.router.navigate(['/auth/login']);
   }
+  ngOnDestroy() {}
 }

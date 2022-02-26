@@ -257,8 +257,11 @@
         </div>
       </div>
     </div>
-    <button [disabled]="editCustomer?.invalid" type="submit" class="d-block mt-4 text-center btn btn-primary">
+    <button id="button-2" [disabled]="editCustomer?.invalid" type="submit"
+      class="d-block mt-4 text-center btn btn-primary">
       update Cutomer
     </button>
   </form>
+  <p-toast position="bottom-center"></p-toast>
+
 </div>

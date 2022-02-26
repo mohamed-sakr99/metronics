@@ -25,6 +25,10 @@
 
   <!-- begin::Wrapper -->
   <div class="d-flex align-items-stretch justify-content-between flex-lg-grow-1">
+    <div class="mt-5 flex-lg-grow-1">
+      Hello {{UserName}}
+    </div>
+    <a (click)="logout()" class="mt-5 d-block" style="cursor: pointer;">Logout</a>
     <ng-container *ngIf="headerLeft === 'menu'">
       <div class="d-flex align-items-stretch" id="kt_header_nav">
         <div class="header-menu align-items-stretch" data-kt-drawer="true" data-kt-drawer-name="header-menu"
@@ -47,10 +51,13 @@
               my-5 my-lg-0
               align-items-stretch
             " id="#kt_header_menu" data-kt-menu="true"></app-header-menu> -->
+
         </div>
       </div>
     </ng-container>
     <!-- begin::Navbar -->
+
+
 
     <ng-container *ngIf="headerLeft === 'page-title'">
       <div class="d-flex align-items-center" id="kt_header_nav">

@@ -11,7 +11,7 @@
         <th>Create By </th>
         <th>Created On</th>
         <th>user Name</th>
-        <th>Email</th>
+        <!-- <th style="min-width: 8rem;">Email</th> -->
         <th>Mobile</th>
         <th>IS Active</th>
         <th>Password</th>
@@ -27,7 +27,7 @@
         <td>{{user?.CreatedByName}}</td>
         <td>{{user?.CreatedOn}}</td>
         <td>{{user?.Name}}</td>
-        <td>{{user?.Email}}</td>
+        <!-- <td style="min-width: 8rem;">{{user?.Email}}</td> -->
         <td>{{user?.Mobile}}</td>
         <td>{{user?.IsActive}}</td>
         <td>{{user?.Password}}</td>
@@ -47,8 +47,9 @@
         </td>
     </ng-template>
   </p-table>
-  <div class="col-10" *ngIf="userList.length> 0">
-    <p-paginator [rows]="PageLimit" [totalRecords]="totalCount" (onPageChange)="onPageChange($event)"
-      [showJumpToPageDropdown]="true" [showPageLinks]="false"></p-paginator>
+  <div class="d-flex justify-content-center mt-5" *ngIf="userList.length> 0 ">
+    <ngb-pagination [collectionSize]="totalCount" [pageSize]="PageLimit" [(page)]="page"
+      (pageChange)="onPageChange($event)" [maxSize]="7">
+    </ngb-pagination>
   </div>
 </div>
