@@ -111,8 +111,7 @@
             </option>
           </select>
           <span *ngIf="
-            RequestTypes?.invalid && RequestTypes?.touched && !RequestTypes?.dirty
-          ">
+            RequestTypes?.invalid && RequestTypes?.touched && !RequestTypes?.dirty">
             you have to add RequestType
           </span>
         </div>
@@ -126,13 +125,17 @@
           </span>
         </div>
       </div>
+
     </div>
-    <div class="m-auto text-center">
+
+    <div class="m-auto">
       <button [disabled]="editCorporateForm?.invalid" type="submit" id="button-1"
-        class="d-inline-block mt-4 text-center btn btn-primary">
+        class="m-auto text-center  btn btn-primary">
         update corporate Cutomer
       </button>
     </div>
+
   </form>
+
   <p-toast position="bottom-center"></p-toast>
 </div>

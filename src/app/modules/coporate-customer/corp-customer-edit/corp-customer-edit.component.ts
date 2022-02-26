@@ -106,6 +106,7 @@ export class CorpCustomerEditComponent implements OnInit {
         this.cdr.detectChanges();
       });
   }
+
   updateCurrentCutomerForm() {
     document.getElementById('button-1')?.setAttribute('disabled', 'true');
     this.corporateApiService

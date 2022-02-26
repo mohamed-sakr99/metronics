@@ -159,6 +159,7 @@ export class CustomerEditComponent implements OnInit {
           RequestTypeID: new FormControl(res.Customer['RequestTypeID']),
           Comment: new FormControl(res.Customer['Comment']),
         });
+        this.cdr.detectChanges();
       });
   }
 
@@ -200,12 +201,14 @@ export class CustomerEditComponent implements OnInit {
       .GetServiceQuota(this.serviceProvID)
       .subscribe((res: any) => {
         this.quota = res.Lookups.ServiceQuota;
+        this.cdr.detectChanges();
       });
   }
 
   addInServiceOffers(ServiceQota: any) {
     this.apiservice.getOffer(this.serviceQotaID).subscribe((res: any) => {
       this.offers = res.Lookups.Offer;
+      this.cdr.detectChanges();
     });
   }
   getAddCustLookups() {
@@ -227,6 +230,7 @@ export class CustomerEditComponent implements OnInit {
     let value = (event.target as HTMLInputElement).value;
     this.apiservice.GetServiceQuota(value).subscribe((res: any) => {
       this.quota = res.Lookups.ServiceQuota;
+      this.cdr.detectChanges();
     });
   }
 
