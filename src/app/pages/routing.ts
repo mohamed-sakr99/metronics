@@ -1,3 +1,4 @@
+import { AuthGuard } from './../modules/auth/services/auth.guard';
 import { Routes } from '@angular/router';
 
 const Routing: Routes = [

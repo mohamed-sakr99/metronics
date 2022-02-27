@@ -37,7 +37,7 @@
       </ng-template>
       <ng-template pTemplate="body" let-customer>
         <tr>
-          <td>{{customer?.CreatedByName}}</td>
+          <td *ngIf="UserRole === 'Admin'">{{customer?.CreatedByName}}</td>
           <td>{{customer?.CreatedOn}}</td>
           <td>{{customer?.RequestNumber}}</td>
           <td>{{customer?.Name}}</td>
@@ -48,7 +48,7 @@
           <td>{{customer?.ServiceQuota}}</td>
           <td>{{customer?.Offer}}</td>
           <td>{{customer?.CustomerStatus}}</td>
-          <td>
+          <td *ngIf="UserRole === 'Admin'">
             <button class="btn btn-primary" [routerLink]="['../edit',customer.ID]">Edit
             </button>
           </td>

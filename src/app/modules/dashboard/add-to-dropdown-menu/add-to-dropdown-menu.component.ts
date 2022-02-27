@@ -59,6 +59,7 @@ export class AddToDropdownMenuComponent implements OnInit {
       .addLookup(this.LookupForm.value, this.UserID)
       .subscribe((res: any) => {
         if ((res.status === 'successfully', res.error == null)) {
+          this.LookupForm.reset();
           this.addLookupSuucessFuly();
         } else if ((res.status === 'successfully', res.error != null)) {
           this.ErrorInAddeddLookup();

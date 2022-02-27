@@ -249,7 +249,7 @@
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
-          <label class="cust-label">Add Comment</label>
+          <label class="cust-label">Comment</label>
           <textarea type="text" class="form-control" formControlName="Comment" name="Comment"></textarea>
           <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
             this field is required
@@ -257,10 +257,11 @@
         </div>
       </div>
     </div>
-    <button id="button-2" [disabled]="editCustomer?.invalid" type="submit"
-      class="d-block mt-4 text-center btn btn-primary">
-      update Cutomer
-    </button>
+    <div class="m-auto text-center">
+      <button id="button-2" [disabled]="editCustomer?.invalid" type="submit" class="mt-4 text-center btn btn-primary">
+        update Cutomer
+      </button>
+    </div>
   </form>
   <p-toast position="bottom-center"></p-toast>
 

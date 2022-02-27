@@ -82,9 +82,10 @@ button {
 }
 label {
   margin-bottom: 5px;
+  text-transform: capitalize !important;
 }
 .cust-span {
   width: 10%;
   flex: 0.5;
-  text-transform: capitalize;
+  text-transform: capitalize !important;
 }

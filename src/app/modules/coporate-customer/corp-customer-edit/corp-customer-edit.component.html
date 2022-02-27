@@ -118,7 +118,7 @@
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
-          <label class="cust-label">Add Comment</label>
+          <label class="cust-label">Comment</label>
           <textarea type="text" class="form-control" formControlName="Comment" name="Comment"></textarea>
           <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
             this field is required
@@ -128,9 +128,9 @@
 
     </div>
 
-    <div class="m-auto">
+    <div class="m-auto text-center">
       <button [disabled]="editCorporateForm?.invalid" type="submit" id="button-1"
-        class="m-auto text-center  btn btn-primary">
+        class="mt-5 text-center  btn btn-primary">
         update corporate Cutomer
       </button>
     </div>
