@@ -5,7 +5,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Account Number</label>
-          <input type="text" class="form-control" formControlName="AccountNumber" autocomplete="off" />
+          <input type="number" class="form-control" formControlName="AccountNumber" autocomplete="off" />
           <span *ngIf="AccountNumber?.invalid && AccountNumber?.touched && !AccountNumber?.dirty">
             this field is required
           </span>
@@ -15,7 +15,7 @@
         <div class="mt-4">
           <label class="cust-label">Cutomer Name</label>
           <input type="text" class="form-control" formControlName="name" autocomplete="off" />
-          <span *ngIf="name?.invalid && !name?.touched && !name?.dirty">
+          <span *ngIf="name?.invalid && name?.touched && !name?.dirty">
             this field is required
           </span>
         </div>
@@ -97,7 +97,7 @@
         <div class="mt-4">
           <label class="cust-label">Lines Number</label>
           <input type="number" class="form-control" formControlName="LinesNumber" autocomplete="off" />
-          <span *ngIf="LinesNumber?.invalid && !LinesNumber?.touched && !LinesNumber?.dirty">
+          <span *ngIf="LinesNumber?.invalid && LinesNumber?.touched && !LinesNumber?.dirty">
             this field is required
           </span>
         </div>

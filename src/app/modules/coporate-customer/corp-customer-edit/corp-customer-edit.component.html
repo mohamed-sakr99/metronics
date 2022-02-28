@@ -6,7 +6,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Account Number</label>
-          <input type="text" class="form-control" formControlName="AccountNumber" />
+          <input type="number" class="form-control" formControlName="AccountNumber" />
           <span *ngIf="AccountNumber?.invalid && AccountNumber?.touched && !AccountNumber?.dirty">
             this field is required
           </span>
@@ -96,7 +96,7 @@
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-4">
           <label class="cust-label">Lines Number</label>
-          <input type="text" class="form-control" formControlName="LinesNumber" />
+          <input type="number" class="form-control" formControlName="LinesNumber" />
           <span *ngIf="LinesNumber?.invalid && LinesNumber?.touched && !LinesNumber?.dirty">
             this field is required
           </span>

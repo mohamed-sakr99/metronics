@@ -119,7 +119,7 @@ export class CorpCustomerEditComponent implements OnInit {
         if (res?.status === 'successfully') {
           this.editedCutomer();
           setTimeout(() => {
-            this.router.navigate(['/corporate/corp-list']);
+            this.router.navigate(['/corp/corp-list']);
           }, 2500);
         } else {
           this.ErrorInEditedCustomer();

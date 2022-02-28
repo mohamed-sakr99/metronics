@@ -9,6 +9,7 @@ import { FixedlineCustomerListComponent } from './fixedline-customer-list/fixedl
 import { FixedlineAdslCustomerListComponent } from './fixedline-adsl-customer-list/fixedline-adsl-customer-list.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { CustomerEditComponent } from './customer-edit/customer-edit.component';
     FixedlineAdslCustomerListComponent,
     CustomerInfoComponent,
     CustomerEditComponent,
+    HomeComponent,
   ],
   imports: [CommonModule, AdslFixedRoutingModule, SharedModule],
 })

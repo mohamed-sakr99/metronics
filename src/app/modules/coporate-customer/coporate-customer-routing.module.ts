@@ -19,7 +19,7 @@ const routes: Routes = [
     component: CorpCustomerEditComponent,
   },
   {
-    path: 'info',
+    path: 'info/:id',
     component: CorpCustomerInfoComponent,
   },
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: 'add',
+    redirectTo: 'add-corp',
     pathMatch: 'full',
   },
 ];

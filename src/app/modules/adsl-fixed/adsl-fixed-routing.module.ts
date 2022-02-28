@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { CustomerEditComponent } from './customer-edit/customer-edit.component';
 import { CustomerInfoComponent } from './customer-info/customer-info.component';
 import { FixedlineAdslCustomerListComponent } from './fixedline-adsl-customer-list/fixedline-adsl-customer-list.component';
@@ -8,6 +9,10 @@ import { NgModule, Component } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
+  {
+    path: 'home',
+    component: HomeComponent,
+  },
   {
     path: 'add-customer',
     component: AddCustomerComponent,
@@ -34,12 +39,12 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'add-customer',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
     path: '**',
-    redirectTo: 'add',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
 ];

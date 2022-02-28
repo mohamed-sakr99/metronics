@@ -20,15 +20,15 @@
         <tr>
           <th *ngIf="UserRole === 'Admin'">User Name</th>
           <th>Date</th>
-          <th>Request Number</th>
-          <th>Customer Name</th>
+          <th>Request No.</th>
+          <th> Name</th>
           <th>Mobile</th>
           <th>govenorate</th>
-          <th>national id</th>
-          <th>Service provider</th>
-          <th>Service quota</th>
+          <!-- <th>national id</th> -->
+          <th> provider</th>
+          <th>quota</th>
           <th>offer</th>
-          <th pSortableColumn="cutomerStatus">Cutomer Status <p-sortIcon field="inventoryStatus">
+          <th pSortableColumn="cutomerStatus">Status <p-sortIcon field="inventoryStatus">
             </p-sortIcon>
           </th>
           <th *ngIf="UserRole === 'Admin'">Edit</th>
@@ -43,7 +43,7 @@
           <td>{{customer?.Name}}</td>
           <td>{{customer?.Mobile}}</td>
           <td>{{customer?.Governorate}}</td>
-          <td>{{customer?.NationalId}}</td>
+          <!-- <td>{{customer?.NationalId}}</td> -->
           <td>{{customer?.ServiceProvider}}</td>
           <td>{{customer?.ServiceQuota}}</td>
           <td>{{customer?.Offer}}</td>

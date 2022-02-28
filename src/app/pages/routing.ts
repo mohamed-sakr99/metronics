@@ -20,17 +20,17 @@ const Routing: Routes = [
       import('./builder/builder.module').then((m) => m.BuilderModule),
   },
   {
-    path: '',
-    loadChildren: () =>
-      import('../modules/adsl-fixed/adsl-fixed.module').then(
-        (m) => m.AdslFixedModule
-      ),
-  },
-  {
     path: 'corp',
     loadChildren: () =>
       import('../modules/coporate-customer/coporate-customer.module').then(
         (m) => m.CoporateCustomerModule
+      ),
+  },
+  {
+    path: '',
+    loadChildren: () =>
+      import('../modules/adsl-fixed/adsl-fixed.module').then(
+        (m) => m.AdslFixedModule
       ),
   },
   {
