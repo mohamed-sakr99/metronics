@@ -19,7 +19,7 @@ export class CustomerEditComponent implements OnInit {
   UserRole = JSON.parse(localStorage.getItem('user') || '{}')?.Role;
   page: any = 1;
   PageLimit: any = 25;
-  CustomerType: any = 24;
+  CustomerType: any;
   totalCount: any;
   governorate: any = [];
   todayDate = new Date();
@@ -36,6 +36,7 @@ export class CustomerEditComponent implements OnInit {
   createdBy = JSON.parse(localStorage.getItem('user') || '{}')?.ID;
   tomorrow = new Date(this.todayDate.getTime());
   editCustomer!: FormGroup;
+  RequestNumber!: FormControl;
   customerTypeID!: FormControl;
   name!: FormControl;
   nationalId!: FormControl;
@@ -55,9 +56,10 @@ export class CustomerEditComponent implements OnInit {
   RouterTypeID!: FormControl;
   RouterDeliveryMethodID!: FormControl;
   RequestTypeID!: FormControl;
-  contactDate!: FormControl;
+  ContactDate!: FormControl;
   Comment!: FormControl;
   CustomerID: any;
+  pattern = '^01[0-2,5]{1}[0-9]{8}$';
 
   private unsubscribe: Subscription[] = [];
 
@@ -73,32 +75,34 @@ export class CustomerEditComponent implements OnInit {
     this.createForm();
   }
   initFormControl() {
-    this.customerTypeID = new FormControl('', Validators.required);
-    this.name = new FormControl('', Validators.required);
-    this.nationalId = new FormControl('', Validators.required);
-    this.address = new FormControl('', Validators.required);
-    this.fixedLine = new FormControl('', Validators.required);
-    this.nearestFixedLine = new FormControl('', Validators.required);
-    this.mobile = new FormControl('', Validators.required);
-    this.governorateID = new FormControl('', Validators.required);
-    this.city = new FormControl('', Validators.required);
-    this.District = new FormControl('', Validators.required);
-    this.SpecialMark = new FormControl('', Validators.required);
-    this.central = new FormControl('', Validators.required);
-    this.serviceProviderID = new FormControl('', Validators.required);
-    this.offerID = new FormControl('', Validators.required);
-    this.serviceQuotaID = new FormControl('', Validators.required);
-    this.customerStatusID = new FormControl('', Validators.required);
-    this.RouterTypeID = new FormControl('', Validators.required);
-    this.RouterDeliveryMethodID = new FormControl('', Validators.required);
-    this.contactDate = new FormControl('', Validators.required);
-    this.RequestTypeID = new FormControl('', Validators.required);
-    this.Comment = new FormControl('', Validators.required);
+    this.RequestNumber = new FormControl('');
+    this.customerTypeID = new FormControl('');
+    this.name = new FormControl('');
+    this.nationalId = new FormControl('');
+    this.address = new FormControl('');
+    this.fixedLine = new FormControl('');
+    this.nearestFixedLine = new FormControl('');
+    this.mobile = new FormControl('');
+    this.governorateID = new FormControl('');
+    this.city = new FormControl('');
+    this.District = new FormControl('');
+    this.SpecialMark = new FormControl('');
+    this.central = new FormControl('');
+    this.serviceProviderID = new FormControl('');
+    this.offerID = new FormControl('');
+    this.serviceQuotaID = new FormControl('');
+    this.customerStatusID = new FormControl('');
+    this.RouterTypeID = new FormControl('');
+    this.RouterDeliveryMethodID = new FormControl('');
+    this.ContactDate = new FormControl('');
+    this.RequestTypeID = new FormControl('');
+    this.Comment = new FormControl('');
   }
 
   createForm() {
     this.editCustomer = new FormGroup({
       customerTypeID: this.customerTypeID,
+      RequestNumber: this.RequestNumber,
       name: this.name,
       nationalId: this.nationalId,
       address: this.address,
@@ -116,7 +120,7 @@ export class CustomerEditComponent implements OnInit {
       customerStatusID: this.customerStatusID,
       RouterTypeID: this.RouterTypeID,
       RouterDeliveryMethodID: this.RouterDeliveryMethodID,
-      contactDate: this.contactDate,
+      ContactDate: this.ContactDate,
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
     });
@@ -124,40 +128,100 @@ export class CustomerEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.CustomerID = this.route.snapshot.paramMap.get('id');
-    console.log(this.CustomerID);
 
     this.getAddCustLookups();
     this.customersDetailsService
       .getCustomerDetails(+this.CustomerID)
       .subscribe((res: any) => {
+        this.customerType = res.Customer.CustomerTypeID;
+
         this.serviceProvID = res.Customer.ServiceProviderID;
         this.addInOfferQuota(this.serviceProvID);
         this.serviceQotaID = res.Customer.ServiceQuotaID;
         this.addInServiceOffers(this.serviceQotaID);
         this.editCustomer = new FormGroup({
-          customerTypeID: new FormControl(res.Customer['CustomerTypeID']),
-          name: new FormControl(res.Customer['Name']),
-          nationalId: new FormControl(res.Customer['NationalId']),
-          address: new FormControl(res.Customer['Address']),
-          fixedLine: new FormControl(res.Customer['FixedLine']),
-          nearestFixedLine: new FormControl(res.Customer['NearestFixedLine']),
-          mobile: new FormControl(res.Customer['Mobile']),
-          governorateID: new FormControl(res.Customer['GovernorateID']),
-          city: new FormControl(res.Customer['City']),
-          District: new FormControl(res.Customer['District']),
-          SpecialMark: new FormControl(res.Customer['SpecialMark']),
-          central: new FormControl(res.Customer['Central']),
-          serviceProviderID: new FormControl(res.Customer['ServiceProviderID']),
-          offerID: new FormControl(res.Customer['OfferID']),
-          serviceQuotaID: new FormControl(res.Customer['ServiceQuotaID']),
-          customerStatusID: new FormControl(res.Customer['CustomerStatusID']),
-          RouterTypeID: new FormControl(res.Customer['RouterTypeID']),
-          RouterDeliveryMethodID: new FormControl(
-            res.Customer['RouterDeliveryMethodID']
+          RequestNumber: new FormControl(
+            res.Customer['RequestNumber'],
+            Validators.required
           ),
-          contactDate: new FormControl(res.Customer['ContactDate']),
-          RequestTypeID: new FormControl(res.Customer['RequestTypeID']),
-          Comment: new FormControl(res.Customer['Comment']),
+          customerTypeID: new FormControl(
+            res.Customer['CustomerTypeID'],
+            Validators.required
+          ),
+          name: new FormControl(res.Customer['Name'], Validators.required),
+          nationalId: new FormControl(
+            res.Customer['NationalId'],
+            Validators.required
+          ),
+          address: new FormControl(
+            res.Customer['Address'],
+            Validators.required
+          ),
+          fixedLine: new FormControl(
+            res.Customer['FixedLine'],
+            Validators.required
+          ),
+          nearestFixedLine: new FormControl(
+            res.Customer['NearestFixedLine'],
+            Validators.required
+          ),
+          mobile: new FormControl(res.Customer['Mobile'], [
+            Validators.required,
+            Validators.pattern(this.pattern),
+          ]),
+          governorateID: new FormControl(
+            res.Customer['GovernorateID'],
+            Validators.required
+          ),
+          city: new FormControl(res.Customer['City'], Validators.required),
+          District: new FormControl(
+            res.Customer['District'],
+            Validators.required
+          ),
+          SpecialMark: new FormControl(
+            res.Customer['SpecialMark'],
+            Validators.required
+          ),
+          central: new FormControl(
+            res.Customer['Central'],
+            Validators.required
+          ),
+          serviceProviderID: new FormControl(
+            res.Customer['ServiceProviderID'],
+            Validators.required
+          ),
+          offerID: new FormControl(
+            res.Customer['OfferID'],
+            Validators.required
+          ),
+          serviceQuotaID: new FormControl(
+            res.Customer['ServiceQuotaID'],
+            Validators.required
+          ),
+          customerStatusID: new FormControl(
+            res.Customer['CustomerStatusID'],
+            Validators.required
+          ),
+          RouterTypeID: new FormControl(
+            res.Customer['RouterTypeID'],
+            Validators.required
+          ),
+          RouterDeliveryMethodID: new FormControl(
+            res.Customer['RouterDeliveryMethodID'],
+            Validators.required
+          ),
+          ContactDate: new FormControl(
+            res.Customer['ContactDate'],
+            Validators.required
+          ),
+          RequestTypeID: new FormControl(
+            res.Customer['RequestTypeID'],
+            Validators.required
+          ),
+          Comment: new FormControl(
+            res.Customer['Comment'],
+            Validators.required
+          ),
         });
         this.cdr.detectChanges();
       });
@@ -173,22 +237,29 @@ export class CustomerEditComponent implements OnInit {
       )
       .subscribe((res: any) => {
         if (res.status === 'successfully') {
-          this.editedCutomer();
+          this.editedCust();
+          if (this.customerType == 22) {
+            this.router.navigate(['/adsl-list']);
+          } else if (this.customerType == 23) {
+            this.router.navigate(['/fixed-list']);
+          } else {
+            this.router.navigate(['/fixed-adsl']);
+          }
         } else {
-          this.ErrorInEditedCustomer();
+          this.ErrorInEditedCust();
         }
         document.getElementById('button-2')?.removeAttribute('disabled');
       });
   }
 
-  editedCutomer() {
+  editedCust() {
     this.messageService.add({
       severity: 'success',
       summary: 'you modified Customer Successfly',
       detail: 'تم تعديل عميل بنجاح',
     });
   }
-  ErrorInEditedCustomer() {
+  ErrorInEditedCust() {
     this.messageService.add({
       severity: 'error',
       summary: 'Customer not modifided Yet',
@@ -220,7 +291,6 @@ export class CustomerEditComponent implements OnInit {
       this.routerType = res.Lookups.RouterType;
       this.deliverMethod = res.Lookups.RouterDeliveryMethod;
       this.RequestTypes = res.Lookups.RequestType;
-      console.log(this.RequestTypes);
 
       this.cdr.detectChanges();
     });

@@ -27,7 +27,6 @@ export class ListOfDropdownMenuComponent implements OnInit {
   getDropDownCategory() {
     this.dropDownMenusService.getCategoryLookups().subscribe((res: any) => {
       this.lookupsCategory = res.Categories;
-      console.log('result', res);
     });
   }
 

@@ -8,6 +8,7 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatCardModule } from '@angular/material/card';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { NgKnifeModule } from 'ng-knife';
 
 @NgModule({
   declarations: [],
@@ -22,6 +23,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCardModule,
     NgbModule,
     MatSnackBarModule,
+    NgKnifeModule,
   ],
   exports: [
     TableModule,
@@ -33,6 +35,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
     MatCardModule,
     NgbModule,
     MatSnackBarModule,
+    NgKnifeModule,
   ],
 })
 export class SharedModule {}

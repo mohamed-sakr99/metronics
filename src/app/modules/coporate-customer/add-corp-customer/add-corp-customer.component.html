@@ -1,19 +1,19 @@
 <div class="card-body">
-  <span class="choose-cust">Add Corporate cutomer</span>
+  <h3 class="choose-cust">Add Corporate customer</h3>
   <form action="" [formGroup]="corporateForm" (ngSubmit)="onSubmit()">
     <div class="row justify-content-lg-center">
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Account Number</label>
-          <input type="number" class="form-control" formControlName="AccountNumber" autocomplete="off" />
+        <div class="mt-5">
+          <label class="cust-label">Account Number <span class="text-danger">*</span></label>
+          <input knifeOnlyNumbers type="text" class="form-control" formControlName="AccountNumber" autocomplete="off" />
           <span *ngIf="AccountNumber?.invalid && AccountNumber?.touched && !AccountNumber?.dirty">
             this field is required
           </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Cutomer Name</label>
+        <div class="mt-5">
+          <label class="cust-label">customer Name<span class="text-danger">*</span> </label>
           <input type="text" class="form-control" formControlName="name" autocomplete="off" />
           <span *ngIf="name?.invalid && name?.touched && !name?.dirty">
             this field is required
@@ -21,17 +21,18 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">mobile</label>
-          <input type="number" class="form-control" formControlName="mobile" name="mobile" autocomplete="off" />
+        <div class="mt-5">
+          <label class="cust-label">mobile <span class="text-danger">*</span></label>
+          <input type="text" knifeOnlyNumbers maxlength="11" class="form-control" formControlName="mobile" name="mobile"
+            autocomplete="off" />
           <span *ngIf="mobile?.invalid && mobile?.touched && !mobile?.dirty">
             this field must be number
           </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">CompanyName</label>
+        <div class="mt-5">
+          <label class="cust-label">CompanyName <span class="text-danger">*</span></label>
           <input type="text" class="form-control" formControlName="CompanyName" name="CompanyName" autocomplete="off" />
           <span *ngIf="
             CompanyName?.invalid && CompanyName?.touched && !CompanyName?.dirty
@@ -41,8 +42,8 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">CompanyAddress</label>
+        <div class="mt-5">
+          <label class="cust-label">CompanyAddress <span class="text-danger">*</span></label>
           <input type="text" class="form-control" formControlName="CompanyAddress" name="CompanyAddress"
             autocomplete="off" />
           <span *ngIf="
@@ -53,8 +54,8 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">CompanyType</label>
+        <div class="mt-5">
+          <label class="cust-label">CompanyType <span class="text-danger">*</span></label>
           <input type="text" class="form-control" formControlName="CompanyType" name="CompanyType" autocomplete="off" />
           <span *ngIf="
             CompanyType?.invalid && CompanyType?.touched && !CompanyType?.dirty
@@ -64,8 +65,8 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Account Type</label>
+        <div class="mt-5">
+          <label class="cust-label">Account Type <span class="text-danger">*</span></label>
           <select type="text" class="form-select" autofocus name="AccountTypeID" formControlName="AccountTypeID">
             <option *ngFor="let account of AccountType" [value]="account.ID">
               {{ account?.Name }}
@@ -79,8 +80,8 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Status</label>
+        <div class="mt-5">
+          <label class="cust-label">Status <span class="text-danger">*</span></label>
           <select type="text" class="form-select" autofocus name="CustomerStatusID" formControlName="CustomerStatusID">
             <option *ngFor="let status of customerStatus" [value]="status.ID">
               {{ status?.Name }}
@@ -94,17 +95,17 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Lines Number</label>
-          <input type="number" class="form-control" formControlName="LinesNumber" autocomplete="off" />
+        <div class="mt-5">
+          <label class="cust-label">Lines Number <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" formControlName="LinesNumber" autocomplete="off" />
           <span *ngIf="LinesNumber?.invalid && LinesNumber?.touched && !LinesNumber?.dirty">
             this field is required
           </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Request Type</label>
+        <div class="mt-5">
+          <label class="cust-label">Request Type <span class="text-danger">*</span></label>
           <select type="text" class="form-select" autofocus name="RequestTypeID" formControlName="RequestTypeID">
             <option *ngFor="let ReqType of RequestTypes" [value]="ReqType.ID">
               {{ ReqType?.Name }}
@@ -118,9 +119,22 @@
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-4">
-          <label class="cust-label">Comment</label>
-          <textarea type="text" class="form-control" formControlName="Comment" autocomplete="off"
+        <div class="mt-5">
+          <label class="cust-label">contact date</label>
+          <input type="date" [min]="tomorrow" class="form-control" formControlName="ContactDate" name="ContactDate" />
+          <span *ngIf="
+              ContactDate?.invalid &&
+              ContactDate?.touched &&
+              !ContactDate?.dirty
+            ">
+            this field is required
+          </span>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-5">
+          <label class="cust-label">Comment <span class="text-danger">*</span></label>
+          <textarea type="text" class="form-control" maxlength="4000" formControlName="Comment" autocomplete="off"
             name="Comment"></textarea>
           <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
             this field is required
@@ -130,8 +144,8 @@
     </div>
     <div class="m-auto text-center">
       <button [disabled]="corporateForm?.invalid" id="button" type="submit" id="button"
-        class="d-inline-block mt-4 text-center btn btn-primary">
-        Add corporate Cutomer
+        class="d-inline-block mt-5 text-center btn btn-primary">
+        Add corporate customer
       </button>
     </div>
   </form>

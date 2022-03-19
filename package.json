@@ -39,6 +39,7 @@
     "line-awesome": "^1.3.0",
     "ng-apexcharts": "^1.5.12",
     "ng-inline-svg": "^13.0.0",
+    "ng-knife": "^0.2.8",
     "ngx-clipboard": "^14.0.1",
     "nouislider": "^15.2.0",
     "object-path": "^0.11.5",

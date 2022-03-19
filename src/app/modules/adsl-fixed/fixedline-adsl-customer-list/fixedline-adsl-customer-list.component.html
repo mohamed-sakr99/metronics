@@ -1,10 +1,10 @@
 <div class="main">
-  <h2 class="mt-3">fixed-Line & Adsl customer list</h2>
+  <h2 class="mt-3">Fixed-Line & Adsl Customer List</h2>
   <hr>
   <div class="m-2 w-35">
     <div class="input-group mb-3">
       <input type="text" autocomplete="off" class="form-control search" name="search" id="button"
-        (keyup.enter)="onSearch()" [(ngModel)]="SearchText" placeholder="search by Request Number or Mobile"
+        (keyup.enter)="onSearch()" [(ngModel)]="SearchText" placeholder="Search by Request Number or Mobile"
         aria-label="Recipient's username" aria-describedby="button-addon2">
       <button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)="onSearch()">
         <i class="fa fa-search"></i>
@@ -19,7 +19,8 @@
       [globalFilterFields]="['name','country','Status']">>
       <ng-template pTemplate="header">
         <tr>
-          <th *ngIf="UserRole === 'Admin'">User Name</th>
+          <th>#</th>
+          <th *ngIf="UserRole === 'Admin' || UserRole ==='Supervisor'">User Name</th>
           <th>Date</th>
           <th>Requset No.</th>
           <th> Name</th>
@@ -32,13 +33,14 @@
           <th pSortableColumn="cutomerStatus">Status <p-sortIcon field="inventoryStatus">
             </p-sortIcon>
           </th>
-          <th *ngIf="UserRole === 'Admin'">Edit</th>
+          <th *ngIf="UserRole === 'Admin' || UserRole ==='Supervisor'">Edit</th>
           <th> info</th>
         </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-customer>
+      <ng-template pTemplate="body" let-customer let-rowIndex="rowIndex">
         <tr>
-          <td *ngIf="UserRole === 'Admin'">{{customer?.CreatedByName}}</td>
+          <td>{{rowIndex + 1 +(( page - 1) * PageLimit )}}</td>
+          <td *ngIf="UserRole === 'Admin' || UserRole ==='Supervisor'">{{customer?.CreatedByName}}</td>
           <td>{{customer?.CreatedOn}}</td>
           <td>{{customer?.RequestNumber}}</td>
           <td>{{customer?.Name}}</td>
@@ -49,7 +51,7 @@
           <td>{{customer?.ServiceQuota}}</td>
           <td>{{customer?.Offer}}</td>
           <td>{{customer?.CustomerStatus}}</td>
-          <td *ngIf="UserRole === 'Admin'">
+          <td *ngIf="UserRole === 'Admin' || UserRole ==='Supervisor'">
             <button class="btn btn-primary" [routerLink]="['../edit',customer.ID]">Edit
             </button>
           </td>

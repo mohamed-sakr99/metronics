@@ -76,19 +76,25 @@ button {
   width: 50%;
 }
 
+.table-striped {
+  font-size: 16.4px;
+  border: 0.5px solid #eee;
+}
 // adjusts font, color and other elements of the toast window if needed
 .custom-toast .ui-toast-message-content {
   font-family: "Courier New", Courier, monospace;
   background: #7b9aff;
 }
 label {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
   text-transform: capitalize !important;
+  font-size: 16.5px;
 }
 .cust-span {
   width: 10%;
   flex: 0.5;
   text-transform: capitalize !important;
+  font-size: 17px;
 }
 .loyal_friends {
   display: grid;

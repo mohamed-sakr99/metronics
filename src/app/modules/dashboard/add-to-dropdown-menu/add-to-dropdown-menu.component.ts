@@ -54,7 +54,6 @@ export class AddToDropdownMenuComponent implements OnInit {
     this.getDropDownCategory();
   }
   onSubmit() {
-    console.log(this.LookupForm.value);
     this.dropDownMenusService
       .addLookup(this.LookupForm.value, this.UserID)
       .subscribe((res: any) => {
@@ -91,7 +90,6 @@ export class AddToDropdownMenuComponent implements OnInit {
   getDropDownCategory() {
     this.dropDownMenusService.getCategoryLookups().subscribe((res: any) => {
       this.lookupsCategory = res.Categories;
-      console.log('result', res);
     });
   }
 
@@ -135,7 +133,6 @@ export class AddToDropdownMenuComponent implements OnInit {
     if (this.serviceProvId === '2') {
       this.apiService.GetServiceQuota(value).subscribe((res: any) => {
         this.serviceQuota = res.Lookups.ServiceQuota;
-        console.log('res', res);
       });
     } else {
       this.serviceQuota = [];

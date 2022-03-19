@@ -56,7 +56,6 @@ export class AddUserComponent implements OnInit {
   getUserRole() {
     this.usersService.getUserDropMenu().subscribe((res: any) => {
       this.userRoleDropMenu = res.Lookups.UserRole;
-      console.log('res', res.Lookups.UserRole);
     });
   }
   onSubmit() {
@@ -70,7 +69,6 @@ export class AddUserComponent implements OnInit {
           this.ErrorInAddeddUser();
         }
       });
-    console.log(this.addUserForm.value);
   }
 
   addUserSuucessFuly() {

@@ -1,6 +1,11 @@
 import { CoporateApiService } from './../../../services/coporate-api.service';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  Validators,
+  PatternValidator,
+} from '@angular/forms';
 import { MessageService } from 'primeng/api';
 
 @Component({
@@ -28,6 +33,9 @@ export class AddCorpCustomerComponent implements OnInit {
   CustomerStatusID!: FormControl;
   LinesNumber!: FormControl;
   Comment!: FormControl;
+  ContactDate: FormControl;
+  pattern = '^01[0-2,5]{1}[0-9]{8}$';
+
   // create init Values
   constructor(
     private corporateApiService: CoporateApiService,
@@ -38,9 +46,12 @@ export class AddCorpCustomerComponent implements OnInit {
     this.createForm();
   }
   initFormControl() {
-    this.AccountNumber = new FormControl('', Validators.required);
+    this.AccountNumber = new FormControl('', [Validators.required]);
     this.name = new FormControl('', Validators.required);
-    this.mobile = new FormControl('', Validators.required);
+    this.mobile = new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.pattern),
+    ]);
     this.CompanyName = new FormControl('', Validators.required);
     this.CompanyAddress = new FormControl('', Validators.required);
     this.CompanyType = new FormControl('', Validators.required);
@@ -49,6 +60,7 @@ export class AddCorpCustomerComponent implements OnInit {
     this.LinesNumber = new FormControl('', Validators.required);
     this.RequestTypeID = new FormControl('', Validators.required);
     this.Comment = new FormControl('', Validators.required);
+    this.ContactDate = new FormControl('', Validators.required);
   }
 
   createForm() {
@@ -64,6 +76,7 @@ export class AddCorpCustomerComponent implements OnInit {
       LinesNumber: this.LinesNumber,
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
+      ContactDate: this.ContactDate,
     });
   }
   onSubmit() {
@@ -104,7 +117,6 @@ export class AddCorpCustomerComponent implements OnInit {
       this.customerStatus = res.Lookups.CustomerStatus;
       this.RequestTypes = res.Lookups.RequestType;
       this.cdr.detectChanges();
-      console.log(this.AccountType);
     });
   }
 }

@@ -27,8 +27,6 @@ export class CorpCustomerInfoComponent implements OnInit {
         this.corpotareCustomerInfo = res.Corporate;
         this.corporateCustomerHistory = res.History;
         this.cdr.detectChanges();
-        console.log(this.corpotareCustomerInfo);
-        console.log(res.History);
       });
   }
 }

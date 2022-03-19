@@ -9,6 +9,7 @@ export const environment = {
   // isMockEnabled: true,
 
   apiUrl: 'http://mkarim225-001-site1.ftempurl.com/api/',
+  // apiUrl: 'http://d094-197-160-28-52.ngrok.io/api/',
 
   // appThemeName: 'Metronic',
   // appPurchaseUrl: 'https://1.envato.market/EA4JP',

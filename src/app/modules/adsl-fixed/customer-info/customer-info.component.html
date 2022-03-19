@@ -1,140 +1,120 @@
 <div class="card m-2 p-2 mb-3">
   <div class="d-flex justify-content-center align-items-center">
-    <h3 class="text-primary">customer info : {{customerInfo?.Name}}</h3>
+    <h3 class="text-primary">Customer Info : {{customerInfo?.Name}}</h3>
   </div>
   <div class="container">
     <hr>
     <div class="row justify-content-lg-center">
 
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> Cutomer name :</span>
-          <span class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.Name}}</span>
-        </div>
+        <table class="table table-striped table-hover">
+          <tbody>
+            <tr>
+              <th scope="row">Cutomer name :</th>
+              <td>{{customerInfo?.Name}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Customer Type :</th>
+              <td>{{customerInfo?.CustomerType}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Governorate :</th>
+              <td>{{customerInfo?.Governorate}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Address :</th>
+              <td>{{customerInfo?.Address}}</td>
+            </tr>
+            <tr>
+              <th scope="row">City :</th>
+              <td>{{customerInfo?.City}}</td>
+            </tr>
+            <tr>
+              <th scope="row">District :</th>
+              <td>{{customerInfo?.District}}</td>
+            </tr>
+            <tr>
+              <th scope="row">SpecialMark :</th>
+              <td>{{customerInfo?.SpecialMark}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> CustomerType :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.CustomerType}}</span>
-        </div>
+        <table class="table table-striped table-hover">
+          <tbody>
+            <tr>
+              <th scope="row">CustomerStatus :</th>
+              <td>{{customerInfo?.CustomerStatus}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Service Provider :</th>
+              <td>{{customerInfo?.ServiceProvider}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Service Quota :</th>
+              <td>{{customerInfo?.ServiceQuota}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Offer :</th>
+              <td>{{customerInfo?.Offer}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Fixed Line :</th>
+              <td>{{customerInfo?.FixedLine}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Nearest FixedLine :</th>
+              <td>{{customerInfo?.NearestFixedLine}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Central :</th>
+              <td>{{customerInfo?.Central}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
+
       <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> Governorate :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.Governorate}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> Address :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.Address}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> City :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.City}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> District :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.District}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> SpecialMark :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.SpecialMark}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> Central :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.Central}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> ContactDate :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.ContactDate}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> CustomerStatus :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.CustomerStatus}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> CreatedOn :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.CreatedOn}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> FixedLine :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.FixedLine}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> NearestFixedLine :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.NearestFixedLine}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> ModifiedByName :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.ModifiedByName}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> ModifiedOn :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.ModifiedOn}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> ServiceProvider :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.ServiceProvider}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> ServiceQuota :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.ServiceQuota}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> Offer :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.Offer}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> RouterType :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.RouterType}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> RouterDeliveryMethod :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.RouterDeliveryMethod}}</span>
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="d-flex justify-content-start align-items-center">
-          <span class="d-inline-block info m-2 p-2 cust-span"> CreatedByName :</span> <span
-            class="d-inline-block info m-2 p-2 cust-span">{{customerInfo?.CreatedByName}}</span>
-        </div>
+        <table class="table table-striped table-hover">
+          <tbody>
+
+            <tr>
+              <th scope="row">Contact Date :</th>
+              <td>{{customerInfo?.ContactDate}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Router Type :</th>
+              <td>{{customerInfo?.RouterType}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Router Delivery Method :</th>
+              <td>{{customerInfo?.RouterDeliveryMethod}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Created By :</th>
+              <td>{{customerInfo?.CreatedByName}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Created On :</th>
+              <td>{{customerInfo?.CreatedOn}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Modified By :</th>
+              <td>{{customerInfo?.ModifiedByName}}</td>
+            </tr>
+            <tr>
+              <th scope="row">Modified On :</th>
+              <td>{{customerInfo?.ModifiedOn}}</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
+
 <div class="card mt-5" *ngIf="customerHistory.length > 0">
   <h3 class="text-center m-3 text-primary">History</h3>
   <p-table [value]="customerHistory" [scrollable]="true" scrollHeight="400px">

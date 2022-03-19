@@ -47,6 +47,8 @@ export class AddCustomerComponent implements OnInit {
   ContactDate!: FormControl;
   RequestTypeID!: FormControl;
   Comment!: FormControl;
+  pattern = '^01[0-2,5]{1}[0-9]{8}$';
+
   constructor(
     private apiservice: ApiService,
     private cdr: ChangeDetectorRef,
@@ -59,13 +61,19 @@ export class AddCustomerComponent implements OnInit {
   // create init values
   initFromcontrol() {
     this.customerTypeID = new FormControl('', Validators.required);
-    this.RequestNumber = new FormControl('', Validators.required);
+    this.RequestNumber = new FormControl('');
     this.name = new FormControl('', Validators.required);
-    this.nationalId = new FormControl('', Validators.required);
+    this.nationalId = new FormControl('', [
+      Validators.required,
+      Validators.maxLength(14),
+    ]);
     this.address = new FormControl('', Validators.required);
     this.fixedLine = new FormControl('', Validators.required);
     this.nearestFixedLine = new FormControl('', Validators.required);
-    this.mobile = new FormControl('', Validators.required);
+    this.mobile = new FormControl('', [
+      Validators.required,
+      Validators.pattern(this.pattern),
+    ]);
     this.governorateID = new FormControl('', Validators.required);
     this.city = new FormControl('', Validators.required);
     this.District = new FormControl('', Validators.required);

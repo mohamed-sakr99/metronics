@@ -32,6 +32,9 @@ export class CorpCustomerEditComponent implements OnInit {
   CustomerStatusID!: FormControl;
   LinesNumber!: FormControl;
   Comment!: FormControl;
+  ContactDate!: FormControl;
+  pattern = '^01[0-2,5]{1}[0-9]{8}$';
+
   private unsubscribe: Subscription[] = [];
 
   constructor(
@@ -46,17 +49,18 @@ export class CorpCustomerEditComponent implements OnInit {
   }
 
   initFormGroup() {
-    this.AccountNumber = new FormControl('', Validators.required);
-    this.name = new FormControl('', Validators.required);
-    this.mobile = new FormControl('', Validators.required);
-    this.CompanyName = new FormControl('', Validators.required);
-    this.CompanyAddress = new FormControl('', Validators.required);
-    this.CompanyType = new FormControl('', Validators.required);
-    this.AccountTypeID = new FormControl('', Validators.required);
-    this.CustomerStatusID = new FormControl('', Validators.required);
-    this.LinesNumber = new FormControl('', Validators.required);
-    this.RequestTypeID = new FormControl('', Validators.required);
-    this.Comment = new FormControl('', Validators.required);
+    this.AccountNumber = new FormControl('');
+    this.name = new FormControl('');
+    this.mobile = new FormControl('');
+    this.CompanyName = new FormControl('');
+    this.CompanyAddress = new FormControl('');
+    this.CompanyType = new FormControl('');
+    this.AccountTypeID = new FormControl('');
+    this.CustomerStatusID = new FormControl('');
+    this.LinesNumber = new FormControl('');
+    this.RequestTypeID = new FormControl('');
+    this.Comment = new FormControl('');
+    this.ContactDate = new FormControl('');
   }
 
   createForm() {
@@ -72,6 +76,7 @@ export class CorpCustomerEditComponent implements OnInit {
       LinesNumber: this.LinesNumber,
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
+      ContactDate: this.ContactDate,
     });
   }
   getLookupsForCorporate() {
@@ -80,7 +85,6 @@ export class CorpCustomerEditComponent implements OnInit {
       this.customerStatus = res.Lookups.CustomerStatus;
       this.RequestTypes = res.Lookups.RequestType;
       this.cdr.detectChanges();
-      console.log(this.AccountType);
     });
   }
   ngOnInit(): void {
@@ -91,17 +95,51 @@ export class CorpCustomerEditComponent implements OnInit {
       .editCorporateCustomer(+this.CorporateID)
       .subscribe((res: any) => {
         this.editCorporateForm = new FormGroup({
-          AccountNumber: new FormControl(res.Corporate['AccountNumber']),
-          name: new FormControl(res.Corporate['Name']),
-          mobile: new FormControl(res.Corporate['Mobile']),
-          CompanyName: new FormControl(res.Corporate['CompanyName']),
-          CompanyAddress: new FormControl(res.Corporate['CompanyAddress']),
-          CompanyType: new FormControl(res.Corporate['CompanyType']),
-          AccountTypeID: new FormControl(res.Corporate['AccountTypeID']),
-          CustomerStatusID: new FormControl(res.Corporate['CustomerStatusID']),
-          LinesNumber: new FormControl(res.Corporate['LinesNumber']),
-          RequestTypeID: new FormControl(res.Corporate['RequestTypeID']),
-          Comment: new FormControl(res.Corporate['Comment']),
+          AccountNumber: new FormControl(
+            res.Corporate['AccountNumber'],
+            Validators.required
+          ),
+          name: new FormControl(res.Corporate['Name'], Validators.required),
+          mobile: new FormControl(res.Corporate['Mobile'], [
+            Validators.required,
+            Validators.pattern(this.pattern),
+          ]),
+          CompanyName: new FormControl(
+            res.Corporate['CompanyName'],
+            Validators.required
+          ),
+          CompanyAddress: new FormControl(
+            res.Corporate['CompanyAddress'],
+            Validators.required
+          ),
+          CompanyType: new FormControl(
+            res.Corporate['CompanyType'],
+            Validators.required
+          ),
+          AccountTypeID: new FormControl(
+            res.Corporate['AccountTypeID'],
+            Validators.required
+          ),
+          CustomerStatusID: new FormControl(
+            res.Corporate['CustomerStatusID'],
+            Validators.required
+          ),
+          LinesNumber: new FormControl(
+            res.Corporate['LinesNumber'],
+            Validators.required
+          ),
+          RequestTypeID: new FormControl(
+            res.Corporate['RequestTypeID'],
+            Validators.required
+          ),
+          ContactDate: new FormControl(
+            res.Corporate['ContactDate'],
+            Validators.required
+          ),
+          Comment: new FormControl(
+            res.Corporate['Comment'],
+            Validators.required
+          ),
         });
         this.cdr.detectChanges();
       });

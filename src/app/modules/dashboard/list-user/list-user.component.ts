@@ -36,7 +36,6 @@ export class ListUserComponent implements OnInit {
         this.userList = res.Users;
         this.totalCount = res.TotalCount;
         this.cdr.detectChanges();
-        console.log('res ', res);
       });
   }
 

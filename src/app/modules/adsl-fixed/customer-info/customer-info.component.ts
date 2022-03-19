@@ -30,7 +30,6 @@ export class CustomerInfoComponent implements OnInit {
         this.customerInfo = res.Customer;
         this.customerHistory = res.History;
         this.cdr.detectChanges();
-        console.log('this.customerInfo', res);
       });
   }
 

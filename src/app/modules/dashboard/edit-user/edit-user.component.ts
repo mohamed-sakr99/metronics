@@ -56,7 +56,6 @@ export class EditUserComponent implements OnInit {
     this.getUserRole();
 
     this.UID = this.route.snapshot.params.id;
-    console.log('uid', this.UID);
 
     this.usersService.editUser(this.UID).subscribe((res: any) => {
       this.editUserForm = new FormGroup({
@@ -73,7 +72,6 @@ export class EditUserComponent implements OnInit {
   getUserRole() {
     this.usersService.getUserDropMenu().subscribe((res: any) => {
       this.userRoleDropMenu = res.Lookups.UserRole;
-      console.log('res', res.Lookups.UserRole);
     });
   }
   updateUserForm() {

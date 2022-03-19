@@ -7,6 +7,7 @@ export const environment = {
   appVersion: 'v8.0.34',
 
   apiUrl: 'http://mkarim225-001-site1.ftempurl.com/api/',
+  // apiUrl: 'http://d094-197-160-28-52.ngrok.io/api/',
 
   // USERDATA_KEY: 'authf649fc9a5f55',
   // isMockEnabled: true,
