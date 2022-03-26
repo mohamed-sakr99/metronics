@@ -23,7 +23,7 @@ export class AddCorpCustomerComponent implements OnInit {
   tomorrow = new Date();
   corporateForm!: FormGroup;
   RequestTypeID!: FormControl;
-  AccountNumber!: FormControl;
+  // AccountNumber!: FormControl;
   name!: FormControl;
   mobile!: FormControl;
   CompanyName!: FormControl;
@@ -34,7 +34,11 @@ export class AddCorpCustomerComponent implements OnInit {
   LinesNumber!: FormControl;
   Comment!: FormControl;
   ContactDate: FormControl;
+  RejectedReason: FormControl;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
+
+  isShowSatuts: boolean = false;
+  isShowRejectedReason: boolean = false;
 
   // create init Values
   constructor(
@@ -46,7 +50,7 @@ export class AddCorpCustomerComponent implements OnInit {
     this.createForm();
   }
   initFormControl() {
-    this.AccountNumber = new FormControl('', [Validators.required]);
+    // this.AccountNumber = new FormControl('', [Validators.required]);
     this.name = new FormControl('', Validators.required);
     this.mobile = new FormControl('', [
       Validators.required,
@@ -61,11 +65,12 @@ export class AddCorpCustomerComponent implements OnInit {
     this.RequestTypeID = new FormControl('', Validators.required);
     this.Comment = new FormControl('', Validators.required);
     this.ContactDate = new FormControl('', Validators.required);
+    this.RejectedReason = new FormControl('', Validators.required);
   }
 
   createForm() {
     this.corporateForm = new FormGroup({
-      AccountNumber: this.AccountNumber,
+      // AccountNumber: this.AccountNumber,
       name: this.name,
       mobile: this.mobile,
       CompanyName: this.CompanyName,
@@ -77,6 +82,7 @@ export class AddCorpCustomerComponent implements OnInit {
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
       ContactDate: this.ContactDate,
+      RejectedReason: this.RejectedReason,
     });
   }
   onSubmit() {
@@ -118,5 +124,36 @@ export class AddCorpCustomerComponent implements OnInit {
       this.RequestTypes = res.Lookups.RequestType;
       this.cdr.detectChanges();
     });
+  }
+  hideAndShowStatus() {
+    if (this.AccountTypeID.value === '30') {
+      this.isShowSatuts = true;
+      this.setValidation('CustomerStatusID');
+    } else {
+      this.isShowSatuts = false;
+      this.clearValidation('CustomerStatusID');
+      this.CustomerStatusID.reset();
+      this.hideAndShowRejectedReason();
+    }
+  }
+
+  hideAndShowRejectedReason() {
+    if (this.CustomerStatusID.value === '17') {
+      this.isShowRejectedReason = true;
+      this.setValidation('RejectedReason');
+    } else {
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.RejectedReason.reset();
+    }
+  }
+  setValidation(controlName: any) {
+    this.corporateForm.controls[controlName].setValidators(Validators.required);
+    this.corporateForm.controls[controlName].updateValueAndValidity();
+  }
+
+  clearValidation(controlName: any) {
+    this.corporateForm.controls[controlName].clearValidators();
+    this.corporateForm.controls[controlName].updateValueAndValidity();
   }
 }

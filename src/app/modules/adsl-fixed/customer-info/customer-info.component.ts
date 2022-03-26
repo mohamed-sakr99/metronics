@@ -10,7 +10,9 @@ import { CustomersDetailsService } from 'src/app/services/customers-details.serv
 })
 export class CustomerInfoComponent implements OnInit {
   customerInfo: any = {};
-  customerHistory: any = [];
+  customerHistoryComments: any = [];
+  customerHistoryStatus: any = [];
+  customerHistoryRejectedReason: any = [];
   private unsubscribe: Subscription[] = [];
 
   constructor(
@@ -27,8 +29,12 @@ export class CustomerInfoComponent implements OnInit {
     this.customersDetailsService
       .getCustomerInfo(this.route.snapshot.params.id)
       .subscribe((res: any) => {
+        console.log('res--', res);
+
         this.customerInfo = res.Customer;
-        this.customerHistory = res.History;
+        this.customerHistoryComments = res?.CommentsHistory;
+        this.customerHistoryStatus = res?.StatusHistory;
+        this.customerHistoryRejectedReason = res?.RejectedReasonHistory;
         this.cdr.detectChanges();
       });
   }

@@ -27,6 +27,7 @@
           <th>Mobile</th>
           <!-- <th>company type</th> -->
           <th>account type</th>
+          <th>req type</th>
           <th pSortableColumn="customerStatus"> Status <p-sortIcon field="CustomerStatus">
             </p-sortIcon>
           </th>
@@ -44,6 +45,7 @@
           <td>{{customer?.Mobile}}</td>
           <!-- <td>{{customer?.CompanyType}}</td> -->
           <td>{{customer?.AccountType}}</td>
+          <td>{{customer?.RequestType}}</td>
           <td>{{customer?.CustomerStatus}}</td>
           <td *ngIf="UserRole === 'Admin' || UserRole ==='Supervisor'">
             <button class="btn btn-info" [routerLink]="['../edit',customer.ID]">Edit

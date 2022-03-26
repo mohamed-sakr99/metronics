@@ -47,8 +47,14 @@ export class AddCustomerComponent implements OnInit {
   ContactDate!: FormControl;
   RequestTypeID!: FormControl;
   Comment!: FormControl;
+  RejectedReason!: FormControl;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
 
+  isShowRequestNumber: boolean = false;
+  isShowFixedLine: boolean = false;
+  isShowNearstFixedLine: boolean = false;
+  isShowRouterAndRouterDeliveryMethod: boolean = false;
+  isShowRejectedReason: boolean = false;
   constructor(
     private apiservice: ApiService,
     private cdr: ChangeDetectorRef,
@@ -87,7 +93,8 @@ export class AddCustomerComponent implements OnInit {
     this.RouterDeliveryMethodID = new FormControl('', Validators.required);
     this.ContactDate = new FormControl('', Validators.required);
     this.RequestTypeID = new FormControl('', Validators.required);
-    this.Comment = new FormControl();
+    this.Comment = new FormControl('');
+    this.RejectedReason = new FormControl('', Validators.required);
   }
 
   // create form
@@ -115,6 +122,7 @@ export class AddCustomerComponent implements OnInit {
       ContactDate: this.ContactDate,
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
+      RejectedReason: this.RejectedReason,
     });
   }
   onSubmit() {
@@ -175,12 +183,118 @@ export class AddCustomerComponent implements OnInit {
     });
   }
 
-  changetStatus(event: Event) {
-    let value = (event.target as HTMLInputElement).value;
-    if (value === '17') {
-      this.setValidation('Comment');
+  changetStatus() {
+    if (this.customerTypeID.value == 22) {
+      this.isShowFixedLine = true;
+      this.setValidation('fixedLine');
+      this.isShowNearstFixedLine = false;
+      this.clearValidation('nearestFixedLine');
+      this.nearestFixedLine.reset();
+      this.isShowRouterAndRouterDeliveryMethod = true;
+      this.setValidation('RouterTypeID');
+      this.setValidation('RouterDeliveryMethodID');
+      if (
+        this.customerStatusID.value == 15 ||
+        this.customerStatusID.value == 18
+      ) {
+        this.isShowRequestNumber = true;
+        this.setValidation('RequestNumber');
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.RejectedReason.reset();
+      } else if (this.customerStatusID.value == 17) {
+        this.isShowRejectedReason = true;
+        this.setValidation('RejectedReason');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.RequestNumber.reset();
+      } else {
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.RequestNumber.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.RejectedReason.reset();
+      }
+    } else if (
+      this.customerTypeID.value == 23 ||
+      this.customerTypeID.value == 24
+    ) {
+      if (this.customerTypeID.value == 23) {
+        this.isShowRouterAndRouterDeliveryMethod = false;
+        this.clearValidation('RouterTypeID');
+        this.clearValidation('RouterDeliveryMethodID');
+        this.RouterTypeID.reset();
+        this.RouterDeliveryMethodID.reset();
+      } else {
+        this.isShowRouterAndRouterDeliveryMethod = true;
+        this.setValidation('RouterTypeID');
+        this.setValidation('RouterDeliveryMethodID');
+      }
+      this.isShowNearstFixedLine = true;
+      this.setValidation('nearestFixedLine');
+      if (
+        this.customerStatusID.value == 15 ||
+        this.customerStatusID.value == 18
+      ) {
+        this.isShowRequestNumber = true;
+        this.setValidation('RequestNumber');
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.fixedLine.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.RejectedReason.reset();
+      } else if (this.customerStatusID.value == 17) {
+        this.isShowRejectedReason = true;
+        this.setValidation('RejectedReason');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.RequestNumber.reset();
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.fixedLine.reset();
+      } else if (
+        this.customerStatusID.value == 63 ||
+        this.customerStatusID.value == 66
+      ) {
+        this.isShowFixedLine = true;
+        this.setValidation('fixedLine');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.RequestNumber.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.RejectedReason.reset();
+      } else {
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.RequestNumber.reset();
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.fixedLine.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.RejectedReason.reset();
+      }
     } else {
-      this.clearValidation('Comment');
+      this.isShowRequestNumber = false;
+      this.clearValidation('RequestNumber');
+      this.RequestNumber.reset();
+      this.isShowFixedLine = false;
+      this.clearValidation('fixedLine');
+      this.fixedLine.reset();
+      this.isShowNearstFixedLine = false;
+      this.clearValidation('nearestFixedLine');
+      this.nearestFixedLine.reset();
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.RejectedReason.reset();
+      this.isShowRouterAndRouterDeliveryMethod = false;
+      this.clearValidation('RouterTypeID');
+      this.clearValidation('RouterDeliveryMethodID');
+      this.RouterTypeID.reset();
+      this.RouterDeliveryMethodID.reset();
     }
   }
 

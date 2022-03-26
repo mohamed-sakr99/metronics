@@ -1,5 +1,11 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormControlName,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { Subscription } from 'rxjs';
@@ -33,8 +39,12 @@ export class CorpCustomerEditComponent implements OnInit {
   LinesNumber!: FormControl;
   Comment!: FormControl;
   ContactDate!: FormControl;
+  RejectedReason!: FormControl;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
-
+  accountTypeid: any;
+  CustomerStatusid: any;
+  isShowStatus: boolean = false;
+  isShowRejectedReason: boolean = false;
   private unsubscribe: Subscription[] = [];
 
   constructor(
@@ -42,7 +52,8 @@ export class CorpCustomerEditComponent implements OnInit {
     private route: ActivatedRoute,
     private messageService: MessageService,
     private router: Router,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private formBuilder: FormBuilder
   ) {
     this.initFormGroup();
     this.createForm();
@@ -61,6 +72,7 @@ export class CorpCustomerEditComponent implements OnInit {
     this.RequestTypeID = new FormControl('');
     this.Comment = new FormControl('');
     this.ContactDate = new FormControl('');
+    this.RejectedReason = new FormControl('');
   }
 
   createForm() {
@@ -77,8 +89,10 @@ export class CorpCustomerEditComponent implements OnInit {
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
       ContactDate: this.ContactDate,
+      RejectedReason: this.RejectedReason,
     });
   }
+
   getLookupsForCorporate() {
     this.corporateApiService.getCorporateLookups().subscribe((res: any) => {
       this.AccountType = res.Lookups.AccountType;
@@ -90,10 +104,11 @@ export class CorpCustomerEditComponent implements OnInit {
   ngOnInit(): void {
     this.CorporateID = this.route.snapshot.paramMap.get('id');
     this.getLookupsForCorporate();
-
     this.corporateApiService
       .editCorporateCustomer(+this.CorporateID)
       .subscribe((res: any) => {
+        this.accountTypeid = res.Corporate.AccountTypeID;
+        this.CustomerStatusid = res.Corporate.CustomerStatusID;
         this.editCorporateForm = new FormGroup({
           AccountNumber: new FormControl(
             res.Corporate['AccountNumber'],
@@ -140,11 +155,74 @@ export class CorpCustomerEditComponent implements OnInit {
             res.Corporate['Comment'],
             Validators.required
           ),
+          RejectedReason: new FormControl(
+            res.Corporate['RejectedReason'],
+            Validators.required
+          ),
         });
+        this.hideAndShowStatusOnLoad(this.accountTypeid);
+        this.hideAndShowRejectedReasononLoad(this.CustomerStatusid);
         this.cdr.detectChanges();
       });
   }
 
+  hideAndShowStatusOnLoad(value: any) {
+    console.log('value', value);
+
+    if (value === 30) {
+      this.isShowStatus = true;
+      this.setValidation('CustomerStatusID');
+    } else {
+      this.isShowStatus = false;
+      this.clearValidation('CustomerStatusID');
+      this.CustomerStatusID.reset();
+      // this.hideAndShowRejectedReason();
+    }
+  }
+
+  hideAndShowRejectedReasononLoad(value: any) {
+    if (value === 17) {
+      this.isShowRejectedReason = true;
+      this.setValidation('RejectedReason');
+    } else {
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.RejectedReason.reset();
+    }
+  }
+  hideAndShowStatus(statusHTMLElement: any) {
+    if (statusHTMLElement.value === '30') {
+      this.isShowStatus = true;
+      this.setValidation('CustomerStatusID');
+    } else {
+      this.isShowStatus = false;
+      this.clearValidation('CustomerStatusID');
+      this.CustomerStatusID.reset();
+      this.hideAndShowRejectedReasononLoad(this.CustomerStatusid);
+    }
+  }
+
+  hideAndShowRejectedReason(statusHTMLElement: any) {
+    if (statusHTMLElement.value === '17') {
+      this.isShowRejectedReason = true;
+      this.setValidation('RejectedReason');
+    } else {
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.RejectedReason.reset();
+    }
+  }
+  setValidation(controlName: any) {
+    this.editCorporateForm.controls[controlName].setValidators(
+      Validators.required
+    );
+    this.editCorporateForm.controls[controlName].updateValueAndValidity();
+  }
+
+  clearValidation(controlName: any) {
+    this.editCorporateForm.controls[controlName].clearValidators();
+    this.editCorporateForm.controls[controlName].updateValueAndValidity();
+  }
   updateCurrentCutomerForm() {
     document.getElementById('button-1')?.setAttribute('disabled', 'true');
     this.corporateApiService

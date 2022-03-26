@@ -10,6 +10,9 @@ import { CoporateApiService } from 'src/app/services/coporate-api.service';
 export class CorpCustomerInfoComponent implements OnInit {
   corpotareCustomerInfo: any = {};
   corporateCustomerHistory: any = [];
+  corporateStatusHistory: any = [];
+  corporateRejectedHistory: any = [];
+
   constructor(
     private corporateApiService: CoporateApiService,
     private route: ActivatedRoute,
@@ -24,8 +27,11 @@ export class CorpCustomerInfoComponent implements OnInit {
     this.corporateApiService
       .getCorporateCustomerInfo(this.route.snapshot.params.id)
       .subscribe((res: any) => {
-        this.corpotareCustomerInfo = res.Corporate;
-        this.corporateCustomerHistory = res.History;
+        console.log('res=>', res);
+        this.corpotareCustomerInfo = res?.Corporate;
+        this.corporateCustomerHistory = res?.CommentsHistory;
+        this.corporateStatusHistory = res?.StatusHistory;
+        this.corporateRejectedHistory = res?.RejectedReasonHistory;
         this.cdr.detectChanges();
       });
   }

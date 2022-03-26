@@ -58,8 +58,15 @@ export class CustomerEditComponent implements OnInit {
   RequestTypeID!: FormControl;
   ContactDate!: FormControl;
   Comment!: FormControl;
+  RejectedReason!: FormControl;
   CustomerID: any;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
+
+  isShowRequestNumber: boolean = false;
+  isShowFixedLine: boolean = false;
+  isShowNearstFixedLine: boolean = false;
+  isShowRouterAndRouterDeliveryMethod: boolean = false;
+  isShowRejectedReason: boolean = false;
 
   private unsubscribe: Subscription[] = [];
 
@@ -97,6 +104,7 @@ export class CustomerEditComponent implements OnInit {
     this.ContactDate = new FormControl('');
     this.RequestTypeID = new FormControl('');
     this.Comment = new FormControl('');
+    this.RejectedReason = new FormControl('');
   }
 
   createForm() {
@@ -123,6 +131,7 @@ export class CustomerEditComponent implements OnInit {
       ContactDate: this.ContactDate,
       RequestTypeID: this.RequestTypeID,
       Comment: this.Comment,
+      RejectedReason: this.RejectedReason,
     });
   }
 
@@ -222,6 +231,10 @@ export class CustomerEditComponent implements OnInit {
             res.Customer['Comment'],
             Validators.required
           ),
+          RejectedReason: new FormControl(
+            res.Customer['RejectedReason'],
+            Validators.required
+          ),
         });
         this.cdr.detectChanges();
       });
@@ -304,6 +317,12 @@ export class CustomerEditComponent implements OnInit {
     });
   }
 
+  changetStatus() {
+    console.log('=>', this.customerStatusID.value);
+    if (this.customerStatusID.value == 17) {
+      this.isShowRejectedReason = true;
+    }
+  }
   ngOnDestroy(): void {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }

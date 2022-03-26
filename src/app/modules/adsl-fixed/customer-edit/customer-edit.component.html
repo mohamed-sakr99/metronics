@@ -16,9 +16,6 @@
         <div class="mt-5">
           <label class="cust-label">Request Number</label>
           <input type="text" class="form-control" formControlName="RequestNumber" autocomplete="off" />
-          <span *ngIf="RequestNumber?.invalid && RequestNumber?.touched && !RequestNumber?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
 
@@ -26,52 +23,33 @@
         <div class="mt-5">
           <label class="cust-label">name</label>
           <input type="text" class="form-control" formControlName="name" />
-          <span *ngIf="name?.invalid && name?.touched && !name?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">national id</label>
-          <input type="text" maxlength="14" knifeOnlyNumbers class="form-control" formControlName="nationalId"
-            name="nationalId" />
-          <span *ngIf="
-              nationalId?.invalid && nationalId?.touched && !nationalId?.dirty
-            ">
-            this field must be number
-          </span>
+          <input type="text" maxlength="14" minlength="14" knifeOnlyNumbers class="form-control"
+            formControlName="nationalId" name="nationalId" />
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">address</label>
           <input type="text" class="form-control" formControlName="address" name="address" />
-          <span *ngIf="address?.invalid && address?.touched && !address?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">fixed line</label>
-          <input type="text" class="form-control" formControlName="fixedLine" name="fixedLine" />
-          <span *ngIf="
-              fixedLine?.invalid && fixedLine?.touched && !fixedLine?.dirty
-            ">
-            this field must be number
-          </span>
+          <input type="text" class="form-control" minlength="10" maxlength="11" formControlName="fixedLine"
+            name="fixedLine" />
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">Nearest fixed line</label>
-          <input type="text" class="form-control" formControlName="nearestFixedLine" name="nearestFixedLine" />
-          <span *ngIf="
-          nearestFixedLine?.invalid && nearestFixedLine?.touched && !nearestFixedLine?.dirty
-            ">
-            this field must be number
-          </span>
+          <input type="text" class="form-control" minlength="10" maxlength="11" formControlName="nearestFixedLine"
+            name="nearestFixedLine" />
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -79,9 +57,6 @@
           <label class="cust-label">mobile</label>
           <input type="text" maxlength="11" knifeOnlyNumbers class="form-control" formControlName="mobile"
             name="mobile" />
-          <span *ngIf="mobile?.invalid && mobile?.touched && !mobile?.dirty">
-            this field must be number
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -92,53 +67,30 @@
               {{ gover?.Name }}
             </option>
           </select>
-          <span *ngIf="
-              governorateID?.invalid && governorateID?.touched && !governorateID?.dirty
-            ">
-            you have to select governorate
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">city</label>
           <input type="text" class="form-control" formControlName="city" name="city" />
-          <span *ngIf="
-              city?.invalid && city?.touched && !city?.dirty
-            ">
-            you have to add city
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">District</label>
           <input type="text" class="form-control" formControlName="District" name="District" />
-          <span *ngIf="
-              District?.invalid && District?.touched && !District?.dirty
-            ">
-            you have to add District
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">special mark</label>
           <input type="text" class="form-control" formControlName="SpecialMark" name="SpecialMark" />
-          <span *ngIf="
-              SpecialMark?.invalid && SpecialMark?.touched && !SpecialMark?.dirty
-            ">
-            you have to add SpecialMark
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">central</label>
           <input type="text" class="form-control" formControlName="central" name="central" />
-          <span *ngIf="central?.invalid && central?.touched && !central?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -150,13 +102,6 @@
               {{ provide?.Name }}
             </option>
           </select>
-          <span *ngIf="
-              serviceProviderID?.invalid &&
-              serviceProviderID?.touched &&
-              !serviceProviderID?.dirty
-            ">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -167,13 +112,6 @@
               {{ quot?.Name }}
             </option>
           </select>
-          <span *ngIf="
-              serviceQuotaID?.invalid &&
-              serviceQuotaID?.touched &&
-              !serviceQuotaID?.dirty
-            ">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -184,23 +122,18 @@
               {{ offer?.Name }}
             </option>
           </select>
-          <span *ngIf="offerID?.invalid && offerID?.touched && !offerID?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
 
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">status</label>
-          <select type="text" class="form-select" autofocus name="customerStatusID" formControlName="customerStatusID">
+          <select class="form-select" (change)="changetStatus()" autofocus name="customerStatusID"
+            formControlName="customerStatusID">
             <option *ngFor="let custStatus of cutomerStatus" [value]="custStatus.ID">
               {{ custStatus?.Name }}
             </option>
           </select>
-          <span *ngIf="customerStatusID?.invalid && customerStatusID?.touched && !customerStatusID?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -211,9 +144,6 @@
               {{ router?.Name }}
             </option>
           </select>
-          <span *ngIf="RouterTypeID?.invalid && RouterTypeID?.touched && !RouterTypeID?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -225,23 +155,12 @@
               {{ deliverMethod?.Name }}
             </option>
           </select>
-          <span
-            *ngIf="RouterDeliveryMethodID?.invalid && RouterDeliveryMethodID?.touched && !RouterDeliveryMethodID?.dirty">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">contact date</label>
           <input type="date" [min]="tomorrow" class="form-control" formControlName="ContactDate" name="contactDate" />
-          <span *ngIf="
-              ContactDate?.invalid &&
-              ContactDate?.touched &&
-              !ContactDate?.dirty
-            ">
-            this field is required
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -252,20 +171,20 @@
               {{ ReqType?.Name }}
             </option>
           </select>
-          <span *ngIf="
-            RequestTypes?.invalid && RequestTypes?.touched && !RequestTypes?.dirty
-          ">
-            you have to add RequestType
-          </span>
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">Comment</label>
-          <textarea type="text" class="form-control" formControlName="Comment" name="Comment"></textarea>
-          <span *ngIf="Comment?.invalid && Comment?.touched && !Comment?.dirty">
-            this field is required
-          </span>
+          <textarea type="text" class="form-control" formControlName="Comment" maxlength="2000"
+            name="Comment"></textarea>
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowRejectedReason">
+        <div class="mt-5">
+          <label class="cust-label">Rejected Reason</label>
+          <textarea type="text" class="form-control" maxlength="2000" formControlName="RejectedReason" maxlength="2000"
+            name="Comment" autocomplete="off"></textarea>
         </div>
       </div>
     </div>

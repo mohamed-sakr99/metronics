@@ -115,9 +115,9 @@
   </div>
 </div>
 
-<div class="card mt-5" *ngIf="customerHistory.length > 0">
-  <h3 class="text-center m-3 text-primary">History</h3>
-  <p-table [value]="customerHistory" [scrollable]="true" scrollHeight="400px">
+<div class="card mt-5" *ngIf="customerHistoryComments?.length > 0">
+  <h3 class="text-center m-3 text-primary">History Comments</h3>
+  <p-table [value]="customerHistoryComments" [scrollable]="true" scrollHeight="200px">
     <ng-template pTemplate="header">
       <tr>
         <th style="min-width:200px">comment</th>
@@ -127,9 +127,47 @@
     </ng-template>
     <ng-template pTemplate="body" let-history>
       <tr>
-        <td style="min-width:200px">{{history.Comment}}</td>
+        <td style="min-width:200px">{{history.Status}}</td>
         <td style="min-width:200px">{{history.CreatedBy}}</td>
         <td style="min-width:200px">{{history.CreatedOn}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class="card mt-5" *ngIf="customerHistoryStatus?.length > 0">
+  <h3 class="text-center m-3 text-primary">History Status</h3>
+  <p-table [value]="customerHistoryStatus" [scrollable]="true" scrollHeight="200px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width:200px">status</th>
+        <th style="min-width:200px"> by </th>
+        <th style="min-width:200px"> on</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-status>
+      <tr>
+        <td style="min-width:200px">{{status?.Status}}</td>
+        <td style="min-width:200px">{{status?.CreatedBy}}</td>
+        <td style="min-width:200px">{{status?.CreatedOn}}</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<div class="card mt-5" *ngIf="customerHistoryRejectedReason?.length > 0">
+  <h3 class="text-center m-3 text-primary">History Rejected Reason</h3>
+  <p-table [value]="customerHistoryRejectedReason" [scrollable]="true" scrollHeight="200px">
+    <ng-template pTemplate="header">
+      <tr>
+        <th style="min-width:200px">Rejected Reason</th>
+        <th style="min-width:200px"> by </th>
+        <th style="min-width:200px"> on</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-reason>
+      <tr>
+        <td style="min-width:200px">{{reason?.RejectedReason}}</td>
+        <td style="min-width:200px">{{reason?.CreatedBy}}</td>
+        <td style="min-width:200px">{{reason?.CreatedOn}}</td>
       </tr>
     </ng-template>
   </p-table>
