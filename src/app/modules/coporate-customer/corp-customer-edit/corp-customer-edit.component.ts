@@ -29,6 +29,7 @@ export class CorpCustomerEditComponent implements OnInit {
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
   accountTypeid: any;
   CustomerStatusid: any;
+  isShowAccountNumber: boolean = false;
   isShowSatuts: boolean = false;
   isShowRejectedReason: boolean = false;
   private unsubscribe: Subscription[] = [];
@@ -138,18 +139,30 @@ export class CorpCustomerEditComponent implements OnInit {
       this.isShowSatuts = false;
       this.clearValidation('CustomerStatusID');
       this.editCorporateForm.get('CustomerStatusID')?.reset();
-      this.hideAndShowRejectedReason();
+      this.changeStatus();
     }
   }
 
-  hideAndShowRejectedReason() {
+  changeStatus() {
     if (this.editCorporateForm.get('CustomerStatusID')?.value == 17) {
       this.isShowRejectedReason = true;
       this.setValidation('RejectedReason');
+      this.isShowAccountNumber = false;
+      this.clearValidation('AccountNumber');
+      this.editCorporateForm.get('AccountNumber')?.reset();
+    } else if (this.editCorporateForm.get('CustomerStatusID')?.value == 18) {
+      this.isShowAccountNumber = true;
+      this.setValidation('AccountNumber');
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.editCorporateForm.get('RejectedReason')?.reset();
     } else {
       this.isShowRejectedReason = false;
       this.clearValidation('RejectedReason');
       this.editCorporateForm.get('RejectedReason')?.reset();
+      this.isShowAccountNumber = false;
+      this.clearValidation('AccountNumber');
+      this.editCorporateForm.get('AccountNumber')?.reset();
     }
   }
   setValidation(controlName: any) {

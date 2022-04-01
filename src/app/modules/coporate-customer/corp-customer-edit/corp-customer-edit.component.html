@@ -3,12 +3,7 @@
   <hr>
   <form action="" [formGroup]="editCorporateForm" (ngSubmit)="updateCurrentCutomerForm()">
     <div class="row justify-content-lg-center">
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-5">
-          <label class="cust-label">Account Number <span class="text-danger">*</span></label>
-          <input knifeOnlyNumbers type="text" class="form-control" formControlName="AccountNumber" autocomplete="off" />
-        </div>
-      </div>
+
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
           <label class="cust-label">customer Name<span class="text-danger">*</span> </label>
@@ -79,7 +74,7 @@
       <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowSatuts">
         <div class="mt-5">
           <label class="cust-label">Status <span class="text-danger">*</span></label>
-          <select (change)="hideAndShowRejectedReason()" class="form-select" autofocus name="CustomerStatusID"
+          <select (change)="changeStatus()" class="form-select" autofocus name="CustomerStatusID"
             formControlName="CustomerStatusID">
             <option *ngFor="let status of customerStatus" [value]="status.ID">
               {{ status?.Name }}
@@ -87,7 +82,12 @@
           </select>
         </div>
       </div>
-
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowAccountNumber">
+        <div class="mt-5">
+          <label class="cust-label">Account Number <span class="text-danger">*</span></label>
+          <input knifeOnlyNumbers type="text" class="form-control" formControlName="AccountNumber" autocomplete="off" />
+        </div>
+      </div>
       <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowRejectedReason">
         <div class="mt-5">
           <label class="cust-label">Reject Reason <span class="text-danger">*</span></label>
