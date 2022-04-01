@@ -35,30 +35,6 @@ export class CustomerEditComponent implements OnInit {
   deliverMethod: any = [];
   createdBy = JSON.parse(localStorage.getItem('user') || '{}')?.ID;
   tomorrow = new Date(this.todayDate.getTime());
-  editCustomer!: FormGroup;
-  RequestNumber!: FormControl;
-  customerTypeID!: FormControl;
-  name!: FormControl;
-  nationalId!: FormControl;
-  address!: FormControl;
-  fixedLine!: FormControl;
-  nearestFixedLine!: FormControl;
-  mobile!: FormControl;
-  governorateID!: FormControl;
-  city!: FormControl;
-  District!: FormControl;
-  SpecialMark!: FormControl;
-  central!: FormControl;
-  serviceProviderID!: FormControl;
-  offerID!: FormControl;
-  serviceQuotaID!: FormControl;
-  customerStatusID!: FormControl;
-  RouterTypeID!: FormControl;
-  RouterDeliveryMethodID!: FormControl;
-  RequestTypeID!: FormControl;
-  ContactDate!: FormControl;
-  Comment!: FormControl;
-  RejectedReason!: FormControl;
   CustomerID: any;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
 
@@ -77,67 +53,35 @@ export class CustomerEditComponent implements OnInit {
     private customersDetailsService: CustomersDetailsService,
     private messageService: MessageService,
     private router: Router
-  ) {
-    this.initFormControl();
-    this.createForm();
-  }
-  initFormControl() {
-    this.RequestNumber = new FormControl('');
-    this.customerTypeID = new FormControl('');
-    this.name = new FormControl('');
-    this.nationalId = new FormControl('');
-    this.address = new FormControl('');
-    this.fixedLine = new FormControl('');
-    this.nearestFixedLine = new FormControl('');
-    this.mobile = new FormControl('');
-    this.governorateID = new FormControl('');
-    this.city = new FormControl('');
-    this.District = new FormControl('');
-    this.SpecialMark = new FormControl('');
-    this.central = new FormControl('');
-    this.serviceProviderID = new FormControl('');
-    this.offerID = new FormControl('');
-    this.serviceQuotaID = new FormControl('');
-    this.customerStatusID = new FormControl('');
-    this.RouterTypeID = new FormControl('');
-    this.RouterDeliveryMethodID = new FormControl('');
-    this.ContactDate = new FormControl('');
-    this.RequestTypeID = new FormControl('');
-    this.Comment = new FormControl('');
-    this.RejectedReason = new FormControl('');
-  }
+  ) {}
 
-  createForm() {
-    this.editCustomer = new FormGroup({
-      customerTypeID: this.customerTypeID,
-      RequestNumber: this.RequestNumber,
-      name: this.name,
-      nationalId: this.nationalId,
-      address: this.address,
-      fixedLine: this.fixedLine,
-      nearestFixedLine: this.nearestFixedLine,
-      mobile: this.mobile,
-      governorateID: this.governorateID,
-      city: this.city,
-      District: this.District,
-      SpecialMark: this.SpecialMark,
-      central: this.central,
-      serviceProviderID: this.serviceProviderID,
-      offerID: this.offerID,
-      serviceQuotaID: this.serviceQuotaID,
-      customerStatusID: this.customerStatusID,
-      RouterTypeID: this.RouterTypeID,
-      RouterDeliveryMethodID: this.RouterDeliveryMethodID,
-      ContactDate: this.ContactDate,
-      RequestTypeID: this.RequestTypeID,
-      Comment: this.Comment,
-      RejectedReason: this.RejectedReason,
-    });
-  }
-
+  editCustomer = new FormGroup({
+    RequestNumber: new FormControl(''),
+    customerTypeID: new FormControl(''),
+    name: new FormControl(''),
+    nationalId: new FormControl(''),
+    address: new FormControl(''),
+    fixedLine: new FormControl(''),
+    nearestFixedLine: new FormControl(''),
+    mobile: new FormControl(''),
+    governorateID: new FormControl(''),
+    city: new FormControl(''),
+    District: new FormControl(''),
+    SpecialMark: new FormControl(''),
+    central: new FormControl(''),
+    serviceProviderID: new FormControl(''),
+    offerID: new FormControl(''),
+    serviceQuotaID: new FormControl(''),
+    customerStatusID: new FormControl(''),
+    RouterTypeID: new FormControl(''),
+    RouterDeliveryMethodID: new FormControl(''),
+    ContactDate: new FormControl(''),
+    RequestTypeID: new FormControl(''),
+    Comment: new FormControl(''),
+    RejectedReason: new FormControl(''),
+  });
   ngOnInit(): void {
     this.CustomerID = this.route.snapshot.paramMap.get('id');
-
     this.getAddCustLookups();
     this.customersDetailsService
       .getCustomerDetails(+this.CustomerID)
@@ -150,92 +94,95 @@ export class CustomerEditComponent implements OnInit {
         this.addInServiceOffers(this.serviceQotaID);
         this.editCustomer = new FormGroup({
           RequestNumber: new FormControl(
-            res.Customer['RequestNumber'],
+            res?.Customer['RequestNumber'],
             Validators.required
           ),
           customerTypeID: new FormControl(
-            res.Customer['CustomerTypeID'],
+            res?.Customer['CustomerTypeID'],
             Validators.required
           ),
           name: new FormControl(res.Customer['Name'], Validators.required),
           nationalId: new FormControl(
-            res.Customer['NationalId'],
+            res?.Customer['NationalId'],
             Validators.required
           ),
           address: new FormControl(
-            res.Customer['Address'],
+            res?.Customer['Address'],
             Validators.required
           ),
           fixedLine: new FormControl(
-            res.Customer['FixedLine'],
+            res?.Customer['FixedLine'],
             Validators.required
           ),
           nearestFixedLine: new FormControl(
-            res.Customer['NearestFixedLine'],
+            res?.Customer['NearestFixedLine'],
             Validators.required
           ),
-          mobile: new FormControl(res.Customer['Mobile'], [
+          mobile: new FormControl(res?.Customer['Mobile'], [
             Validators.required,
             Validators.pattern(this.pattern),
           ]),
           governorateID: new FormControl(
-            res.Customer['GovernorateID'],
+            res?.Customer['GovernorateID'],
             Validators.required
           ),
-          city: new FormControl(res.Customer['City'], Validators.required),
+          city: new FormControl(res?.Customer['City'], Validators.required),
           District: new FormControl(
-            res.Customer['District'],
+            res?.Customer['District'],
             Validators.required
           ),
           SpecialMark: new FormControl(
-            res.Customer['SpecialMark'],
+            res?.Customer['SpecialMark'],
             Validators.required
           ),
           central: new FormControl(
-            res.Customer['Central'],
+            res?.Customer['Central'],
             Validators.required
           ),
           serviceProviderID: new FormControl(
-            res.Customer['ServiceProviderID'],
+            res?.Customer['ServiceProviderID'],
             Validators.required
           ),
           offerID: new FormControl(
-            res.Customer['OfferID'],
+            res?.Customer['OfferID'],
             Validators.required
           ),
           serviceQuotaID: new FormControl(
-            res.Customer['ServiceQuotaID'],
+            res?.Customer['ServiceQuotaID'],
             Validators.required
           ),
           customerStatusID: new FormControl(
-            res.Customer['CustomerStatusID'],
+            res?.Customer['CustomerStatusID'],
             Validators.required
           ),
           RouterTypeID: new FormControl(
-            res.Customer['RouterTypeID'],
+            res?.Customer['RouterTypeID'],
             Validators.required
           ),
           RouterDeliveryMethodID: new FormControl(
-            res.Customer['RouterDeliveryMethodID'],
+            res?.Customer['RouterDeliveryMethodID'],
             Validators.required
           ),
           ContactDate: new FormControl(
-            res.Customer['ContactDate'],
+            res?.Customer['ContactDate'],
             Validators.required
           ),
           RequestTypeID: new FormControl(
-            res.Customer['RequestTypeID'],
+            res?.Customer['RequestTypeID'],
             Validators.required
           ),
           Comment: new FormControl(
-            res.Customer['Comment'],
+            res?.Customer['Comment'],
             Validators.required
           ),
           RejectedReason: new FormControl(
-            res.Customer['RejectedReason'],
+            res?.Customer['RejectedReason'],
             Validators.required
           ),
         });
+        console.log('>>', this.customerType);
+
+        this.changetStatus();
         this.cdr.detectChanges();
       });
   }
@@ -318,11 +265,129 @@ export class CustomerEditComponent implements OnInit {
   }
 
   changetStatus() {
-    console.log('=>', this.customerStatusID.value);
-    if (this.customerStatusID.value == 17) {
-      this.isShowRejectedReason = true;
+    if (this.customerType == 22) {
+      this.isShowFixedLine = true;
+      this.setValidation('fixedLine');
+      this.isShowNearstFixedLine = false;
+      this.clearValidation('nearestFixedLine');
+      this.editCustomer.get('nearestFixedLine')?.reset();
+      this.isShowRouterAndRouterDeliveryMethod = true;
+      this.setValidation('RouterTypeID');
+      this.setValidation('RouterDeliveryMethodID');
+      if (
+        this.editCustomer.get('customerStatusID')?.value == 15 ||
+        this.editCustomer.get('customerStatusID')?.value == 18
+      ) {
+        this.isShowRequestNumber = true;
+        this.setValidation('RequestNumber');
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.editCustomer.get('RejectedReason')?.reset();
+      } else if (this.editCustomer.get('customerStatusID')?.value == 17) {
+        this.isShowRejectedReason = true;
+        this.setValidation('RejectedReason');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.editCustomer.get('RequestNumber')?.reset();
+      } else {
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.editCustomer.get('RequestNumber')?.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.editCustomer.get('RejectedReason')?.reset();
+      }
+    } else if (this.customerType == 23 || this.customerType == 24) {
+      console.log('>>>', this.customerType);
+
+      if (this.customerType == 23) {
+        this.isShowRouterAndRouterDeliveryMethod = false;
+        this.clearValidation('RouterTypeID');
+        this.clearValidation('RouterDeliveryMethodID');
+        this.editCustomer.get('RouterTypeID')?.reset();
+        this.editCustomer.get('RouterDeliveryMethodID')?.reset();
+      } else {
+        this.isShowRouterAndRouterDeliveryMethod = true;
+        this.setValidation('RouterTypeID');
+        this.setValidation('RouterDeliveryMethodID');
+      }
+      this.isShowNearstFixedLine = true;
+      this.setValidation('nearestFixedLine');
+      if (
+        this.editCustomer.get('customerStatusID')?.value == 15 ||
+        this.editCustomer.get('customerStatusID')?.value == 18
+      ) {
+        this.isShowRequestNumber = true;
+        this.setValidation('RequestNumber');
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.editCustomer.get('fixedLine')?.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.editCustomer.get('RejectedReason')?.reset();
+      } else if (this.editCustomer.get('customerStatusID')?.value == 17) {
+        this.isShowRejectedReason = true;
+        this.setValidation('RejectedReason');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.editCustomer.get('RequestNumber')?.reset();
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.editCustomer.get('fixedLine')?.reset();
+      } else if (
+        this.editCustomer.get('customerStatusID')?.value == 63 ||
+        this.editCustomer.get('customerStatusID')?.value == 66
+      ) {
+        this.isShowFixedLine = true;
+        this.setValidation('fixedLine');
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.editCustomer.get('RequestNumber')?.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.editCustomer.get('RejectedReason')?.reset();
+      } else {
+        this.isShowRequestNumber = false;
+        this.clearValidation('RequestNumber');
+        this.editCustomer.get('RequestNumber')?.reset();
+        this.isShowFixedLine = false;
+        this.clearValidation('fixedLine');
+        this.editCustomer.get('fixedLine')?.reset();
+        this.isShowRejectedReason = false;
+        this.clearValidation('RejectedReason');
+        this.editCustomer.get('RejectedReason')?.reset();
+      }
+    } else {
+      this.isShowRequestNumber = false;
+      this.clearValidation('RequestNumber');
+      this.editCustomer.get('RequestNumber')?.reset();
+      this.isShowFixedLine = false;
+      this.clearValidation('fixedLine');
+      this.editCustomer.get('fixedLine')?.reset();
+      this.isShowNearstFixedLine = false;
+      this.clearValidation('nearestFixedLine');
+      this.editCustomer.get('nearestFixedLine')?.reset();
+      this.isShowRejectedReason = false;
+      this.clearValidation('RejectedReason');
+      this.editCustomer.get('RejectedReason')?.reset();
+      this.isShowRouterAndRouterDeliveryMethod = false;
+      this.clearValidation('RouterTypeID');
+      this.clearValidation('RouterDeliveryMethodID');
+      this.editCustomer.get('RouterTypeID')?.reset();
+      this.editCustomer.get('RouterDeliveryMethodID')?.reset();
     }
   }
+
+  setValidation(controlName: any) {
+    this.editCustomer.controls[controlName].setValidators(Validators.required);
+    this.editCustomer.controls[controlName].updateValueAndValidity();
+  }
+
+  clearValidation(controlName: any) {
+    this.editCustomer.controls[controlName].clearValidators();
+    this.editCustomer.controls[controlName].updateValueAndValidity();
+  }
+
   ngOnDestroy(): void {
     this.unsubscribe.forEach((sb) => sb.unsubscribe());
   }

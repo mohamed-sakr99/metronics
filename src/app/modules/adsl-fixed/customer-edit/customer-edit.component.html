@@ -12,12 +12,7 @@
         </div>
       </div> -->
 
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-5">
-          <label class="cust-label">Request Number</label>
-          <input type="text" class="form-control" formControlName="RequestNumber" autocomplete="off" />
-        </div>
-      </div>
+
 
       <div class="col-md-4 col-sm-6 col-12">
         <div class="mt-5">
@@ -32,20 +27,15 @@
             formControlName="nationalId" name="nationalId" />
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-12">
-        <div class="mt-5">
-          <label class="cust-label">address</label>
-          <input type="text" class="form-control" formControlName="address" name="address" />
-        </div>
-      </div>
-      <div class="col-md-4 col-sm-6 col-12">
+
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowFixedLine">
         <div class="mt-5">
           <label class="cust-label">fixed line</label>
           <input type="text" class="form-control" minlength="10" maxlength="11" formControlName="fixedLine"
             name="fixedLine" />
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-12">
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowNearstFixedLine">
         <div class="mt-5">
           <label class="cust-label">Nearest fixed line</label>
           <input type="text" class="form-control" minlength="10" maxlength="11" formControlName="nearestFixedLine"
@@ -79,6 +69,12 @@
         <div class="mt-5">
           <label class="cust-label">District</label>
           <input type="text" class="form-control" formControlName="District" name="District" />
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12">
+        <div class="mt-5">
+          <label class="cust-label">address</label>
+          <input type="text" class="form-control" formControlName="address" name="address" />
         </div>
       </div>
       <div class="col-md-4 col-sm-6 col-12">
@@ -130,13 +126,20 @@
           <label class="cust-label">status</label>
           <select class="form-select" (change)="changetStatus()" autofocus name="customerStatusID"
             formControlName="customerStatusID">
-            <option *ngFor="let custStatus of cutomerStatus" [value]="custStatus.ID">
+            <option *ngFor="let custStatus of cutomerStatus" [ngValue]="custStatus.ID">
               {{ custStatus?.Name }}
             </option>
           </select>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-12">
+
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowRequestNumber">
+        <div class="mt-5">
+          <label class="cust-label">Request Number</label>
+          <input type="text" class="form-control" formControlName="RequestNumber" autocomplete="off" />
+        </div>
+      </div>
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowRouterAndRouterDeliveryMethod">
         <div class="mt-5">
           <label class="cust-label">Router</label>
           <select type="text" class="form-select" autofocus name="RouterTypeID" formControlName="RouterTypeID">
@@ -146,7 +149,7 @@
           </select>
         </div>
       </div>
-      <div class="col-md-4 col-sm-6 col-12">
+      <div class="col-md-4 col-sm-6 col-12" *ngIf="isShowRouterAndRouterDeliveryMethod">
         <div class="mt-5">
           <label class="cust-label">Router Deilvery Method</label>
           <select type="text" class="form-select" autofocus name="RouterDeliveryMethodID"

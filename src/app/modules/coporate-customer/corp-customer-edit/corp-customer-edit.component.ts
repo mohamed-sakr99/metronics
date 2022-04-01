@@ -26,24 +26,10 @@ export class CorpCustomerEditComponent implements OnInit {
   AccountType: any = [];
   customerStatus: any = [];
   RequestTypes: any = [];
-  editCorporateForm!: FormGroup;
-  AccountNumber!: FormControl;
-  RequestTypeID!: FormControl;
-  name!: FormControl;
-  mobile!: FormControl;
-  CompanyName!: FormControl;
-  CompanyAddress!: FormControl;
-  CompanyType!: FormControl;
-  AccountTypeID!: FormControl;
-  CustomerStatusID!: FormControl;
-  LinesNumber!: FormControl;
-  Comment!: FormControl;
-  ContactDate!: FormControl;
-  RejectedReason!: FormControl;
   pattern = '^01[0-2,5]{1}[0-9]{8}$';
   accountTypeid: any;
   CustomerStatusid: any;
-  isShowStatus: boolean = false;
+  isShowSatuts: boolean = false;
   isShowRejectedReason: boolean = false;
   private unsubscribe: Subscription[] = [];
 
@@ -54,44 +40,23 @@ export class CorpCustomerEditComponent implements OnInit {
     private router: Router,
     private cdr: ChangeDetectorRef,
     private formBuilder: FormBuilder
-  ) {
-    this.initFormGroup();
-    this.createForm();
-  }
+  ) {}
 
-  initFormGroup() {
-    this.AccountNumber = new FormControl('');
-    this.name = new FormControl('');
-    this.mobile = new FormControl('');
-    this.CompanyName = new FormControl('');
-    this.CompanyAddress = new FormControl('');
-    this.CompanyType = new FormControl('');
-    this.AccountTypeID = new FormControl('');
-    this.CustomerStatusID = new FormControl('');
-    this.LinesNumber = new FormControl('');
-    this.RequestTypeID = new FormControl('');
-    this.Comment = new FormControl('');
-    this.ContactDate = new FormControl('');
-    this.RejectedReason = new FormControl('');
-  }
-
-  createForm() {
-    this.editCorporateForm = new FormGroup({
-      AccountNumber: this.AccountNumber,
-      name: this.name,
-      mobile: this.mobile,
-      CompanyName: this.CompanyName,
-      CompanyAddress: this.CompanyAddress,
-      CompanyType: this.CompanyType,
-      AccountTypeID: this.AccountTypeID,
-      CustomerStatusID: this.CustomerStatusID,
-      LinesNumber: this.LinesNumber,
-      RequestTypeID: this.RequestTypeID,
-      Comment: this.Comment,
-      ContactDate: this.ContactDate,
-      RejectedReason: this.RejectedReason,
-    });
-  }
+  editCorporateForm = new FormGroup({
+    AccountNumber: new FormControl(''),
+    name: new FormControl(''),
+    mobile: new FormControl(''),
+    CompanyName: new FormControl(''),
+    CompanyAddress: new FormControl(''),
+    CompanyType: new FormControl(''),
+    AccountTypeID: new FormControl(''),
+    CustomerStatusID: new FormControl(''),
+    LinesNumber: new FormControl(''),
+    RequestTypeID: new FormControl(''),
+    Comment: new FormControl(''),
+    ContactDate: new FormControl(''),
+    RejectedReason: new FormControl(''),
+  });
 
   getLookupsForCorporate() {
     this.corporateApiService.getCorporateLookups().subscribe((res: any) => {
@@ -160,56 +125,31 @@ export class CorpCustomerEditComponent implements OnInit {
             Validators.required
           ),
         });
-        this.hideAndShowStatusOnLoad(this.accountTypeid);
-        this.hideAndShowRejectedReasononLoad(this.CustomerStatusid);
+        this.hideAndShowStatus();
         this.cdr.detectChanges();
       });
   }
 
-  hideAndShowStatusOnLoad(value: any) {
-    console.log('value', value);
-
-    if (value === 30) {
-      this.isShowStatus = true;
+  hideAndShowStatus() {
+    if (this.editCorporateForm.get('AccountTypeID')?.value == 30) {
+      this.isShowSatuts = true;
       this.setValidation('CustomerStatusID');
     } else {
-      this.isShowStatus = false;
+      this.isShowSatuts = false;
       this.clearValidation('CustomerStatusID');
-      this.CustomerStatusID.reset();
-      // this.hideAndShowRejectedReason();
+      this.editCorporateForm.get('CustomerStatusID')?.reset();
+      this.hideAndShowRejectedReason();
     }
   }
 
-  hideAndShowRejectedReasononLoad(value: any) {
-    if (value === 17) {
+  hideAndShowRejectedReason() {
+    if (this.editCorporateForm.get('CustomerStatusID')?.value == 17) {
       this.isShowRejectedReason = true;
       this.setValidation('RejectedReason');
     } else {
       this.isShowRejectedReason = false;
       this.clearValidation('RejectedReason');
-      this.RejectedReason.reset();
-    }
-  }
-  hideAndShowStatus(statusHTMLElement: any) {
-    if (statusHTMLElement.value === '30') {
-      this.isShowStatus = true;
-      this.setValidation('CustomerStatusID');
-    } else {
-      this.isShowStatus = false;
-      this.clearValidation('CustomerStatusID');
-      this.CustomerStatusID.reset();
-      this.hideAndShowRejectedReasononLoad(this.CustomerStatusid);
-    }
-  }
-
-  hideAndShowRejectedReason(statusHTMLElement: any) {
-    if (statusHTMLElement.value === '17') {
-      this.isShowRejectedReason = true;
-      this.setValidation('RejectedReason');
-    } else {
-      this.isShowRejectedReason = false;
-      this.clearValidation('RejectedReason');
-      this.RejectedReason.reset();
+      this.editCorporateForm.get('RejectedReason')?.reset();
     }
   }
   setValidation(controlName: any) {
